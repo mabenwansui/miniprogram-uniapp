@@ -10,36 +10,51 @@
   </view>
   <view class="content"> </view>
   <view class="list">
-    <comp-nav-layout :navList="navList" :contentList="contentList" />
+    <comp-nav-layout :data="dataList" :onMenuChange="handleMenuChange">
+      <template #navItem="{ item }">{{ item.node }}</template>
+      <template #commodityTitle="{ item, index }">{{ item.node }}</template>
+      <template #commodityItem="{ item }">
+        <view>{{item.description}}</view>
+        <view>{{ item.name }}</view>
+        <view>{{ item.originalPrice }}</view>
+        <view>{{ item.price }}</view>
+      </template>
+    </comp-nav-layout>
   </view>
 </template>
 <script setup>
-const navList = [
-  {
-    id: '1',
-    node: '酒水饮料'
-  },
-  {
-    id: '2',
-    node: '新零售'
+import { ref, onMounted } from 'vue'
+import { getCommodityCategory, getCommodityListByCategory } from './api'
+const dataList = ref([])
+const curPage = ref(1)
+onMounted(async () => {
+  async function setNav() {
+    const { flag, data } = await getCommodityCategory()
+    if (flag === 1) {
+      dataList.value = data.list.map((item) => {
+        return {
+          id: item.id,
+          node: item.title
+        }
+      })
+    }
   }
-]
-const contentList = [
-  {
-    id: '1',
-    node: '酒水饮料',
-    menuCode: '1',
-    children: [
-      {
-        id: '211',
-        node: '商品1',
-      }
-    ]
+  await setNav()
+})
+
+const handleMenuChange = async ({categoryId, index}) => {
+  const { flag, data } = await getCommodityListByCategory({
+    category: categoryId,
+    curPage: 1
+  })
+  if (flag === 1) {
+    dataList.value[index].children = data.list
+    curPage.value = data.curPage
   }
-]
+}
 </script>
 <style>
 .content {
-
+  background-color: #fff;
 }
 </style>

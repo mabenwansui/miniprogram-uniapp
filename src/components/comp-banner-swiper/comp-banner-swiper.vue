@@ -6,7 +6,7 @@
     autoplay
     indicator-color="rgba(255, 255, 255, .3)"
     indicator-active-color="rgb(255, 255, 255)"
-    :interval="4000"
+    :interval="1114000"
     :duration="500"
   >
     <swiper-item v-for="item in imgUrl" :key="item">

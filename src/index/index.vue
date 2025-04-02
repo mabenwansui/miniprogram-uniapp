@@ -14,6 +14,8 @@ const title = ref('Hello')
 
 onMounted(() => {
   async function init() {
+    const rest = await post('/api/commodity/category/list')
+    console.log('rest:::::', rest)
   }
   init()
 })

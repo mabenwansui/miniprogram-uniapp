@@ -10,89 +10,92 @@ importers:
     dependencies:
       '@dcloudio/uni-app':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(@dcloudio/types@3.4.14)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(@dcloudio/types@3.4.14)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-app-harmony':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-app-plus':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-components':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-h5':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-alipay':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-baidu':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(@dcloudio/types@3.4.14)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(@dcloudio/types@3.4.14)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-jd':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-kuaishou':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-lark':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-qq':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-toutiao':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-weixin':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-xhs':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-quickapp-webview':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-ui':
+        specifier: ^1.5.7
+        version: 1.5.7
       vue:
         specifier: ^3.5.13
-        version: 3.5.13(typescript@4.9.5)
+        version: 3.5.13(typescript@5.8.2)
       vue-i18n:
         specifier: ^9.14.3
-        version: 9.14.3(vue@3.5.13(typescript@4.9.5))
+        version: 9.14.3(vue@3.5.13(typescript@5.8.2))
     devDependencies:
       '@dcloudio/types':
         specifier: ^3.4.14
         version: 3.4.14
       '@dcloudio/uni-automator':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(jest-environment-node@27.5.1)(jest@27.0.4)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(jest-environment-node@27.5.1)(jest@27.0.4)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-cli-shared':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-stacktracey':
         specifier: 3.0.0-4050620250312001
         version: 3.0.0-4050620250312001
       '@dcloudio/vite-plugin-uni':
         specifier: 3.0.0-4050620250312001
-        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))
+        version: 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))
       '@vue/runtime-core':
         specifier: ^3.5.13
         version: 3.5.13
       '@vue/tsconfig':
         specifier: ^0.7.0
-        version: 0.7.0(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5))
+        version: 0.7.0(typescript@5.8.2)(vue@3.5.13(typescript@5.8.2))
       sass:
         specifier: ^1.86.0
         version: 1.86.0
       typescript:
-        specifier: ^4.9.4
-        version: 4.9.5
+        specifier: ^5.8.2
+        version: 5.8.2
       vite:
         specifier: 5.2.8
         version: 5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0)
       vue-tsc:
         specifier: ^2.2.8
-        version: 2.2.8(typescript@4.9.5)
+        version: 2.2.8(typescript@5.8.2)
 
 packages:
 
@@ -789,6 +792,9 @@ packages:
 
   '@dcloudio/uni-stat@3.0.0-4050620250312001':
     resolution: {integrity: sha512-ck6xiym3wyg1ZEpxIxHV5PhVs6PiCZ5a6mIMGsmOds9nbeWeLhlAg31Bjtg31eSVI0dbP2qN7CPP9VuWL+ap5w==}
+
+  '@dcloudio/uni-ui@1.5.7':
+    resolution: {integrity: sha512-DugxSIrQrze1FLdUOj9a+JEQ0bHGjnJTcGUK1mN/MivKg7nuKJBRWk5Ipa9sUdoBznX6ndz5h2e7Uao6x1CdCw==}
 
   '@dcloudio/vite-plugin-uni@3.0.0-4050620250312001':
     resolution: {integrity: sha512-JlXe59qaAHFWA1DZJrqFuXDCs2jLQ3fmbQLYKwrQkmuWHFljiRjFrTp8iCl5PTRHGUiBhhbuJBtQeHarTOTajA==}
@@ -3358,9 +3364,9 @@ packages:
   typedarray-to-buffer@3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
 
-  typescript@4.9.5:
-    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
-    engines: {node: '>=4.2.0'}
+  typescript@5.8.2:
+    resolution: {integrity: sha512-aJn6wq13/afZp/jT9QZmwEjDqqvSGp1VT5GVg+f/t6/oVyrgXM6BY1h9BRh/O5p3PlUPAe+WuiEZOmb/49RqoQ==}
+    engines: {node: '>=14.17'}
     hasBin: true
 
   ufo@1.5.4:
@@ -4366,10 +4372,10 @@ snapshots:
 
   '@dcloudio/types@3.4.14': {}
 
-  '@dcloudio/uni-app-harmony@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-app-harmony@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-app-uts': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-app-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-app-uts': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-app-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))
       debug: 4.4.0
       fs-extra: 10.1.0
       licia: 1.47.0
@@ -4384,10 +4390,10 @@ snapshots:
       - vite
       - vue
 
-  '@dcloudio/uni-app-plus@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-app-plus@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-app-uts': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-app-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-app-uts': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-app-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-app-vue': 3.0.0-4050620250312001
       debug: 4.4.0
       fs-extra: 10.1.0
@@ -4403,12 +4409,12 @@ snapshots:
       - vite
       - vue
 
-  '@dcloudio/uni-app-uts@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-app-uts@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       '@babel/parser': 7.26.10
       '@babel/types': 7.26.10
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-console': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-console': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-i18n': 3.0.0-4050620250312001
       '@dcloudio/uni-nvue-styler': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
@@ -4437,14 +4443,14 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-app-vite@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-app-vite@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-i18n': 3.0.0-4050620250312001
       '@dcloudio/uni-nvue-styler': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@rollup/pluginutils': 5.1.4(rollup@4.37.0)
-      '@vitejs/plugin-vue': 5.1.0(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))
+      '@vitejs/plugin-vue': 5.1.0(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))
       '@vue/compiler-dom': 3.4.21
       '@vue/compiler-sfc': 3.4.21
       debug: 4.4.0
@@ -4462,16 +4468,16 @@ snapshots:
 
   '@dcloudio/uni-app-vue@3.0.0-4050620250312001': {}
 
-  '@dcloudio/uni-app@3.0.0-4050620250312001(@dcloudio/types@3.4.14)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-app@3.0.0-4050620250312001(@dcloudio/types@3.4.14)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       '@dcloudio/types': 3.4.14
-      '@dcloudio/uni-cloud': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-components': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-console': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cloud': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-components': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-console': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-i18n': 3.0.0-4050620250312001
-      '@dcloudio/uni-push': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-push': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
-      '@dcloudio/uni-stat': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-stat': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@vue/shared': 3.4.21
     transitivePeerDependencies:
       - '@nuxt/kit'
@@ -4482,9 +4488,9 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-automator@3.0.0-4050620250312001(jest-environment-node@27.5.1)(jest@27.0.4)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-automator@3.0.0-4050620250312001(jest-environment-node@27.5.1)(jest@27.0.4)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       address: 1.2.2
       cross-env: 7.0.3
       debug: 4.4.0
@@ -4509,7 +4515,7 @@ snapshots:
       - utf-8-validate
       - vue
 
-  '@dcloudio/uni-cli-shared@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-cli-shared@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@babel/code-frame': 7.26.2
@@ -4526,7 +4532,7 @@ snapshots:
       '@vue/compiler-dom': 3.4.21
       '@vue/compiler-sfc': 3.4.21
       '@vue/compiler-ssr': 3.4.21
-      '@vue/server-renderer': 3.4.21(vue@3.5.13(typescript@4.9.5))
+      '@vue/server-renderer': 3.4.21(vue@3.5.13(typescript@5.8.2))
       '@vue/shared': 3.4.21
       adm-zip: 0.5.16
       autoprefixer: 10.4.21(postcss@8.5.3)
@@ -4567,9 +4573,9 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-cloud@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-cloud@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-i18n': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/shared': 3.4.21
@@ -4583,10 +4589,10 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-components@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-components@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cloud': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-h5': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cloud': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-h5': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-i18n': 3.0.0-4050620250312001
     transitivePeerDependencies:
       - '@nuxt/kit'
@@ -4597,9 +4603,9 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-console@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-console@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       fs-extra: 10.1.0
     transitivePeerDependencies:
       - '@nuxt/kit'
@@ -4610,14 +4616,14 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-h5-vite@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-h5-vite@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@rollup/pluginutils': 5.1.4(rollup@4.37.0)
       '@vue/compiler-dom': 3.4.21
       '@vue/compiler-sfc': 3.4.21
-      '@vue/server-renderer': 3.4.21(vue@3.5.13(typescript@4.9.5))
+      '@vue/server-renderer': 3.4.21(vue@3.5.13(typescript@5.8.2))
       '@vue/shared': 3.4.21
       debug: 4.4.0
       fs-extra: 10.1.0
@@ -4632,26 +4638,26 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-h5-vue@3.0.0-4050620250312001(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-h5-vue@3.0.0-4050620250312001(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
-      '@vue/server-renderer': 3.4.21(vue@3.5.13(typescript@4.9.5))
+      '@vue/server-renderer': 3.4.21(vue@3.5.13(typescript@5.8.2))
     transitivePeerDependencies:
       - vue
 
-  '@dcloudio/uni-h5@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-h5@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-h5-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-h5-vue': 3.0.0-4050620250312001(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-h5-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-h5-vue': 3.0.0-4050620250312001(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-i18n': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
-      '@vue/server-renderer': 3.4.21(vue@3.5.13(typescript@4.9.5))
+      '@vue/server-renderer': 3.4.21(vue@3.5.13(typescript@5.8.2))
       '@vue/shared': 3.4.21
       debug: 4.4.0
       localstorage-polyfill: 1.0.1
       postcss-selector-parser: 6.1.2
       safe-area-insets: 1.4.1
-      vue-router: 4.5.0(vue@3.5.13(typescript@4.9.5))
+      vue-router: 4.5.0(vue@3.5.13(typescript@5.8.2))
       xmlhttprequest: 1.8.0
     transitivePeerDependencies:
       - '@nuxt/kit'
@@ -4664,10 +4670,10 @@ snapshots:
 
   '@dcloudio/uni-i18n@3.0.0-4050620250312001': {}
 
-  '@dcloudio/uni-mp-alipay@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-mp-alipay@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-vue': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/compiler-core': 3.4.21
@@ -4681,14 +4687,14 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-mp-baidu@3.0.0-4050620250312001(@dcloudio/types@3.4.14)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-mp-baidu@3.0.0-4050620250312001(@dcloudio/types@3.4.14)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-app': 3.0.0-4050620250312001(@dcloudio/types@3.4.14)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-app': 3.0.0-4050620250312001(@dcloudio/types@3.4.14)(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-vue': 3.0.0-4050620250312001
-      '@dcloudio/uni-mp-weixin': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-mp-weixin': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/compiler-core': 3.4.21
       '@vue/shared': 3.4.21
@@ -4710,12 +4716,12 @@ snapshots:
       - utf-8-validate
       - vue
 
-  '@dcloudio/uni-mp-compiler@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-mp-compiler@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       '@babel/generator': 7.26.10
       '@babel/parser': 7.26.10
       '@babel/types': 7.26.10
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/compiler-core': 3.4.21
       '@vue/compiler-dom': 3.4.21
@@ -4730,11 +4736,11 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-mp-jd@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-mp-jd@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-vue': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/shared': 3.4.21
@@ -4747,13 +4753,13 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-mp-kuaishou@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-mp-kuaishou@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-vue': 3.0.0-4050620250312001
-      '@dcloudio/uni-mp-weixin': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-mp-weixin': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/compiler-core': 3.4.21
       '@vue/shared': 3.4.21
@@ -4769,12 +4775,12 @@ snapshots:
       - utf-8-validate
       - vue
 
-  '@dcloudio/uni-mp-lark@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-mp-lark@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-toutiao': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-toutiao': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-vue': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/compiler-core': 3.4.21
@@ -4788,10 +4794,10 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-mp-qq@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-mp-qq@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-vue': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/shared': 3.4.21
@@ -4805,11 +4811,11 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-mp-toutiao@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-mp-toutiao@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-vue': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/compiler-core': 3.4.21
@@ -4823,11 +4829,11 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-mp-vite@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-mp-vite@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-i18n': 3.0.0-4050620250312001
-      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-vue': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/compiler-dom': 3.4.21
@@ -4848,10 +4854,10 @@ snapshots:
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/shared': 3.4.21
 
-  '@dcloudio/uni-mp-weixin@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-mp-weixin@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-vue': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/shared': 3.4.21
@@ -4872,11 +4878,11 @@ snapshots:
       - utf-8-validate
       - vue
 
-  '@dcloudio/uni-mp-xhs@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-mp-xhs@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-compiler': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-vue': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/shared': 3.4.21
@@ -4894,9 +4900,9 @@ snapshots:
       parse-css-font: 4.0.0
       postcss: 8.5.3
 
-  '@dcloudio/uni-push@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-push@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
     transitivePeerDependencies:
       - '@nuxt/kit'
       - '@vueuse/core'
@@ -4906,10 +4912,10 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/uni-quickapp-webview@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-quickapp-webview@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
-      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
+      '@dcloudio/uni-mp-vite': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-mp-vue': 3.0.0-4050620250312001
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@vue/shared': 3.4.21
@@ -4928,9 +4934,9 @@ snapshots:
 
   '@dcloudio/uni-stacktracey@3.0.0-4050620250312001': {}
 
-  '@dcloudio/uni-stat@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-stat@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       debug: 4.4.0
     transitivePeerDependencies:
@@ -4942,17 +4948,19 @@ snapshots:
       - ts-node
       - vue
 
-  '@dcloudio/vite-plugin-uni@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))':
+  '@dcloudio/uni-ui@1.5.7': {}
+
+  '@dcloudio/vite-plugin-uni@3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/plugin-syntax-import-meta': 7.10.4(@babel/core@7.26.10)
       '@babel/plugin-transform-typescript': 7.26.8(@babel/core@7.26.10)
-      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@4.9.5))
+      '@dcloudio/uni-cli-shared': 3.0.0-4050620250312001(postcss@8.5.3)(rollup@4.37.0)(vue@3.5.13(typescript@5.8.2))
       '@dcloudio/uni-shared': 3.0.0-4050620250312001
       '@rollup/pluginutils': 5.1.4(rollup@4.37.0)
       '@vitejs/plugin-legacy': 5.3.2(terser@5.39.0)(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))
-      '@vitejs/plugin-vue': 5.1.0(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))
-      '@vitejs/plugin-vue-jsx': 3.1.0(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))
+      '@vitejs/plugin-vue': 5.1.0(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))
+      '@vitejs/plugin-vue-jsx': 3.1.0(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))
       '@vue/compiler-core': 3.4.21
       '@vue/compiler-dom': 3.4.21
       '@vue/compiler-sfc': 3.4.21
@@ -5773,20 +5781,20 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue-jsx@3.1.0(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))':
+  '@vitejs/plugin-vue-jsx@3.1.0(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/plugin-transform-typescript': 7.26.8(@babel/core@7.26.10)
       '@vue/babel-plugin-jsx': 1.4.0(@babel/core@7.26.10)
       vite: 5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0)
-      vue: 3.5.13(typescript@4.9.5)
+      vue: 3.5.13(typescript@5.8.2)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue@5.1.0(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@4.9.5))':
+  '@vitejs/plugin-vue@5.1.0(vite@5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0))(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       vite: 5.2.8(@types/node@22.13.12)(sass@1.86.0)(terser@5.39.0)
-      vue: 3.5.13(typescript@4.9.5)
+      vue: 3.5.13(typescript@5.8.2)
 
   '@volar/language-core@2.4.12':
     dependencies:
@@ -5898,7 +5906,7 @@ snapshots:
 
   '@vue/devtools-api@6.6.4': {}
 
-  '@vue/language-core@2.2.8(typescript@4.9.5)':
+  '@vue/language-core@2.2.8(typescript@5.8.2)':
     dependencies:
       '@volar/language-core': 2.4.12
       '@vue/compiler-dom': 3.5.13
@@ -5909,7 +5917,7 @@ snapshots:
       muggle-string: 0.4.1
       path-browserify: 1.0.1
     optionalDependencies:
-      typescript: 4.9.5
+      typescript: 5.8.2
 
   '@vue/reactivity@3.5.13':
     dependencies:
@@ -5927,26 +5935,26 @@ snapshots:
       '@vue/shared': 3.5.13
       csstype: 3.1.3
 
-  '@vue/server-renderer@3.4.21(vue@3.5.13(typescript@4.9.5))':
+  '@vue/server-renderer@3.4.21(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       '@vue/compiler-ssr': 3.4.21
       '@vue/shared': 3.4.21
-      vue: 3.5.13(typescript@4.9.5)
+      vue: 3.5.13(typescript@5.8.2)
 
-  '@vue/server-renderer@3.5.13(vue@3.5.13(typescript@4.9.5))':
+  '@vue/server-renderer@3.5.13(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       '@vue/compiler-ssr': 3.5.13
       '@vue/shared': 3.5.13
-      vue: 3.5.13(typescript@4.9.5)
+      vue: 3.5.13(typescript@5.8.2)
 
   '@vue/shared@3.4.21': {}
 
   '@vue/shared@3.5.13': {}
 
-  '@vue/tsconfig@0.7.0(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5))':
+  '@vue/tsconfig@0.7.0(typescript@5.8.2)(vue@3.5.13(typescript@5.8.2))':
     optionalDependencies:
-      typescript: 4.9.5
-      vue: 3.5.13(typescript@4.9.5)
+      typescript: 5.8.2
+      vue: 3.5.13(typescript@5.8.2)
 
   abab@2.0.6: {}
 
@@ -7902,7 +7910,7 @@ snapshots:
     dependencies:
       is-typedarray: 1.0.0
 
-  typescript@4.9.5: {}
+  typescript@5.8.2: {}
 
   ufo@1.5.4: {}
 
@@ -8004,33 +8012,33 @@ snapshots:
 
   vscode-uri@3.1.0: {}
 
-  vue-i18n@9.14.3(vue@3.5.13(typescript@4.9.5)):
+  vue-i18n@9.14.3(vue@3.5.13(typescript@5.8.2)):
     dependencies:
       '@intlify/core-base': 9.14.3
       '@intlify/shared': 9.14.3
       '@vue/devtools-api': 6.6.4
-      vue: 3.5.13(typescript@4.9.5)
+      vue: 3.5.13(typescript@5.8.2)
 
-  vue-router@4.5.0(vue@3.5.13(typescript@4.9.5)):
+  vue-router@4.5.0(vue@3.5.13(typescript@5.8.2)):
     dependencies:
       '@vue/devtools-api': 6.6.4
-      vue: 3.5.13(typescript@4.9.5)
+      vue: 3.5.13(typescript@5.8.2)
 
-  vue-tsc@2.2.8(typescript@4.9.5):
+  vue-tsc@2.2.8(typescript@5.8.2):
     dependencies:
       '@volar/typescript': 2.4.12
-      '@vue/language-core': 2.2.8(typescript@4.9.5)
-      typescript: 4.9.5
+      '@vue/language-core': 2.2.8(typescript@5.8.2)
+      typescript: 5.8.2
 
-  vue@3.5.13(typescript@4.9.5):
+  vue@3.5.13(typescript@5.8.2):
     dependencies:
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-sfc': 3.5.13
       '@vue/runtime-dom': 3.5.13
-      '@vue/server-renderer': 3.5.13(vue@3.5.13(typescript@4.9.5))
+      '@vue/server-renderer': 3.5.13(vue@3.5.13(typescript@5.8.2))
       '@vue/shared': 3.5.13
     optionalDependencies:
-      typescript: 4.9.5
+      typescript: 5.8.2
 
   w3c-hr-time@1.0.2:
     dependencies:

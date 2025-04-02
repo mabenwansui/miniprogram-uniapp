@@ -88,11 +88,12 @@ function request<T>(props: RequestProps, options?: Options): Promise<ResponsePro
               return
             }            
             await setToken()
+            const { flag, data } = await request<T>(props, { ...options, _loop: true })
+            resolve({ flag, data })
+          } else {
             uni.showModal({
               title: msg
             })
-            const { flag, data } = await request<T>(props, { ...options, _loop: true })
-            resolve({ flag, data })
           }
         } else {
           resolve({ flag, data })
@@ -101,6 +102,6 @@ function request<T>(props: RequestProps, options?: Options): Promise<ResponsePro
     })
   })
 }
-export function post<T>(url: string, data: Data, options?: Options): Promise<ResponseProps<T>> {
+export function post<T>(url: string, data: Data = {}, options?: Options): Promise<ResponseProps<T>> {
   return request<T>({ url, data, method: 'POST' }, options)
 }
