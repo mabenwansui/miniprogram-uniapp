@@ -37,8 +37,8 @@ observer检测原理: 通过将top，与bottom，将观测视口压缩成1px的�
                 :key="child.id"
                 class="nav-content-item"
               >
-                <template #body>
-                  <slot name="commodityItem" :index="index" :item="child"></slot>
+                <template #body style="width: 100%">
+                  <slot name="commodityItem" class="commodity-item" :index="index" :item="child"></slot>
                 </template>
               </uni-list-item>
             </view>
@@ -123,16 +123,18 @@ const handleNavClick = async (menuCode: string, index: number) => {
   .nav-left {
     width: 214rpx;
     overflow-y: auto;
-    background-color: red;
+    background-color: $uni-bg-color-container;
     position: sticky;
     height: 100vh;
     .nav-left-item {
       text-align: center;
-      font-size: 28rpx;
-      line-height: 60rpx;
+      font-size: $uni-font-size-base;
+      color: $uni-text-color-secondary;
+      line-height: 40rpx;
       padding: 16rpx 0;
       &.active {
-        background-color: #fff;
+        color: $uni-color-primary-secondary;
+        background-color: $uni-bg-color;
       }
     }
   }
@@ -143,8 +145,11 @@ const handleNavClick = async (menuCode: string, index: number) => {
     }
     .nav-section {
       .nav-title {
-        background-color: rgb(255, 145, 0);
+        font-size: $uni-font-size-base;
         position: sticky;
+        background: $uni-bg-color;
+        line-height: 40rpx;
+        padding: 16rpx 0 16rpx 15px;
         z-index: 10;
       }
       .nav-content {
@@ -152,10 +157,11 @@ const handleNavClick = async (menuCode: string, index: number) => {
           padding-top: 100rpx;
           min-height: 150vh;
         }
+        .commodity-item {
+          width: 100%;
+        }
         .nav-content-item {
           min-height: 400rpx;
-          background-color: rgb(255, 255, 0);
-          border-bottom: 1rpx solid #000;
         }
       }
     }

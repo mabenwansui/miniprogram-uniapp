@@ -15,7 +15,7 @@
         <template #navItem="{ item }">{{ item.node }}</template>
         <template #commodityTitle="{ item, index }">{{ item.node }}</template>
         <template #commodityItem="{ item }">
-          <commodity-item :title="item.name" :price="item.price" />
+          <commodity-item :title="item.name" :price="item.price" :description="item.description" :imgSize="`160rpx`" />
         </template>
       </comp-nav-layout>
     </view>
@@ -55,10 +55,8 @@ const handleLoad = async (categoryId, index) => {
 }
 </script>
 <style>
-.page{
+/* .page{
   height: 100vh;
-}
-.content {
-  background-color: #fff;
-}
+} */
+.content {}
 </style>
