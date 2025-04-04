@@ -13,11 +13,9 @@ import { post } from '@/common/js/request'
 const title = ref('Hello')
 
 onMounted(() => {
-  async function init() {
-  }
+  async function init() {}
   init()
 })
-
 </script>
 
 <style>
