@@ -8,6 +8,7 @@
     },
     {
       "path": "pages/commodity/index",
+      "renderer": "skyline",
       "style": {
         "navigationBarTitleText": "商品详情"
       }
@@ -27,10 +28,6 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页"
-      },
-      {
-        "pagePath": "pages/commodity/index",
-        "text": "商品详情"
       },
       {
         "pagePath": "pages/about/index",

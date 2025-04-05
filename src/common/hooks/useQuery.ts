@@ -1,19 +1,26 @@
 import { getCurrentInstance } from 'vue'
-interface Rect {
+
+interface Boundary {
   top: number
   left: number
   right: number
   bottom: number
+}
+export interface Rect extends Boundary {
   scrollTop: number
   scrollLeft: number
 }
-interface ScrollOffset {
+export interface ScrollOffset {
   scrollHeight: number
   scrollTop: number
   scrollWidth: number
   scrollLeft: number
 }
-export function useQuery() {
+export interface ClientRect extends Boundary {
+  width: number
+  height: number
+}
+export default function useQuery() {
   const instance = getCurrentInstance()
   const query = uni.createSelectorQuery().in(instance?.proxy)
   return {
@@ -25,6 +32,14 @@ export function useQuery() {
           .exec()
       )
     },
+    boundingClientRect: (selector: string): Promise<ClientRect | ClientRect[]> => {
+      return new Promise((resolve) => {
+        query
+          .select(selector)
+          .boundingClientRect((data) => resolve(data as ClientRect | ClientRect[]))
+          .exec()
+      })
+    },
     dataset: (selector: string): Promise<any> => {
       return new Promise((resolve) =>
         query
@@ -35,22 +50,13 @@ export function useQuery() {
     },
     scrollOffset: (): Promise<ScrollOffset> => {
       return new Promise((resolve) => {
-        query.selectViewport().scrollOffset((res) => {
-          resolve(res as unknown as ScrollOffset)
-        }).exec()
+        query
+          .selectViewport()
+          .scrollOffset((res) => {
+            resolve(res as unknown as ScrollOffset)
+          })
+          .exec()
       })
     }
   }
 }
-
-// query
-// .select('.a67e2c54ae2b84713db7b7319')
-// .fields(
-//   {
-//     rect: true
-//   },
-//   (res) => {
-//     console.log('maben:res', res)
-//   }
-// )
-// .exec()

@@ -1,6 +1,3 @@
-<!--
-observer检测原理: 通过将top，与bottom，将观测视口压缩成1px的线，以精准判断当前进入唯一的元素
--->
 <template>
   <view class="layout">
     <view class="nav-left" :style="{ top: `${top}px` }">
@@ -15,7 +12,7 @@ observer检测原理: 通过将top，与bottom，将观测视口压缩成1px的�
       </view>
     </view>
     <view class="nav-main">
-      <uni-list>
+      <uni-list :border="false">
         <view class="nav-list">
           <view
             v-for="(item, index) in props.data"
@@ -49,8 +46,9 @@ observer检测原理: 通过将top，与bottom，将观测视口压缩成1px的�
   </view>
 </template>
 <script setup lang="ts">
+/** observer检测原理: 通过将top，与bottom，将观测视口压缩成1px的线，以精准判断当前进入唯一的元素 */
 import { ref, watchEffect, computed } from 'vue'
-import { useQuery } from '@/common/hooks/useQuery'
+import useQuery from '@/common/hooks/useQuery'
 import useObserverMenu from './useObserverMenu'
 import useObserverSectionLoad from './useObserverSectionLoad'
 interface Item {
@@ -132,14 +130,22 @@ const handleNavClick = async (menuCode: string, index: number) => {
       color: $uni-text-color-secondary;
       line-height: 40rpx;
       padding: 16rpx 0;
+      margin-bottom: 6px;
       &.active {
         color: $uni-color-primary-secondary;
         background-color: $uni-bg-color;
       }
     }
   }
+
   .nav-main {
     flex: 1;
+    ::v-deep(.uni-list--border):after {
+      background-color: transparent !important;
+    }
+    ::v-deep(.uni-list-item__container) {
+      overflow: inherit!important;
+    }
     .nav-list .nav-section:last-child {
       min-height: 100vh;
     }

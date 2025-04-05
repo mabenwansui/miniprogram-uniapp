@@ -4,17 +4,25 @@
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
+    <view @click="handleClick">跳转到商品页</view>
   </view>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { post } from '@/common/js/request'
 const title = ref('Hello')
+const handleClick = () => {
+  uni.navigateTo({
+    url: '/pages/commodity/index'
+  })
+}
 
 onMounted(() => {
-  async function init() {}
-  init()
+  setTimeout(() => {
+    uni.redirectTo({
+      url: '/pages/commodity/index'
+    })
+  }, 500)
 })
 </script>
 
