@@ -3,3 +3,7 @@ export async function sleep(time: number) {
     setTimeout(resolve, time)
   })
 }
+
+export function px2rem(px: number) {
+  return px * 2 || 0
+}

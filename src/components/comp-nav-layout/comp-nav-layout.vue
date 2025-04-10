@@ -1,59 +1,56 @@
 <template>
-  <view class="layout">
-    <view class="nav-left" :style="{ top: `${top}px` }">
-      <view
-        v-for="(item, index) in props.data"
-        :key="item.id"
-        :class="{ active: activeMenu === item.id }"
-        @click="() => handleNavClick(item.id, index)"
-        class="nav-left-item"
-      >
-        <slot name="navItem" :item="item"></slot>
+  <scroll-view
+    class="scroll-view"
+    :scroll-into-view="scrollIntoView"
+    :scroll-anchoring="true"
+    :scroll-y="true"
+    :show-scrollbar="false"
+  >
+    <slot name="header" />
+    <view class="layout">
+      <view class="nav-left" :style="{ top: `${top}px` }">
+        <view
+          v-for="(item, index) in props.data"
+          :key="item.id"
+          :class="{ active: activeMenu === item.id }"
+          @click="() => handleNavClick(item.id, index)"
+          class="nav-left-item"
+        >
+          <slot name="navItem" :item="item" />
+        </view>
       </view>
-    </view>
-    <view class="nav-main">
-      <uni-list :border="false">
-        <view class="nav-list">
-          <view
-            v-for="(item, index) in props.data"
-            :key="item.id"
-            :data-id="item.id"
-            :data-index="index"
-            :class="['nav-section', 'id_' + item.id]"
-          >
-            <view class="nav-title" :style="{ top: `${top}px` }">
-              <slot name="commodityTitle" :index="index" :item="item"></slot>
+      <view class="nav-main">
+        <view
+          v-for="(item, index) in props.data"
+          :key="item.id"
+          :data-id="item.id"
+          :data-index="index"
+          :class="['nav-section', 'id_' + item.id]"
+        >
+          <view class="nav-title" :style="{ top: `${top}px` }">
+            <slot name="commodityTitle" :index="index" :item="item" />
+          </view>
+          <view class="nav-content">
+            <view v-if="loading[index] === true" class="placeholder">
+              <uni-load-more status="loading" :showText="false" />
             </view>
-            <view class="nav-content">
-              <view v-if="loading[index] === true" class="placeholder">
-                <uni-load-more status="loading" :showText="false" />
-              </view>
-              <uni-list-item
-                v-else-if="item?.children"
-                v-for="child in item.children"
-                :key="child.id"
-                class="nav-content-item"
-              >
-                <template #body style="width: 100%">
-                  <slot name="commodityItem" class="commodity-item" :index="index" :item="child"></slot>
-                </template>
-              </uni-list-item>
+            <view v-else-if="item?.children" v-for="child in item.children" :key="child.id" class="nav-content-item">
+              <slot name="commodityItem" class="commodity-item" :parentIndex="index" :item="child" />
             </view>
           </view>
         </view>
-      </uni-list>
+      </view>
     </view>
-  </view>
+    <slot name="footer" />
+  </scroll-view>
 </template>
 <script setup lang="ts">
 /** observer检测原理: 通过将top，与bottom，将观测视口压缩成1px的线，以精准判断当前进入唯一的元素 */
-import { ref, watchEffect, computed } from 'vue'
-import useQuery from '@/common/hooks/useQuery'
+import { ref, watchEffect, computed, nextTick } from 'vue'
 import useObserverMenu from './useObserverMenu'
 import useObserverSectionLoad from './useObserverSectionLoad'
-interface Item {
+interface Item extends Record<string, any> {
   id: string
-  nodeData: any
   children: Item[]
 }
 const props = defineProps<{
@@ -61,9 +58,9 @@ const props = defineProps<{
   data: Item[]
   onLoad?: (categoryId: string, index: number) => Promise<void>
 }>()
-const query = useQuery()
 const activeMenu = ref<string>()
 const loading = ref<boolean[]>([])
+const scrollIntoView = ref<string>()
 let curIndex: number
 const observerMenu = useObserverMenu()
 const observerSectionLoad = useObserverSectionLoad()
@@ -73,17 +70,13 @@ function setMenu(menuCode: string, index: number) {
   curIndex = index
   activeMenu.value = menuCode
 }
-
 async function tirggerLoad(menuCode: string, index: number, scrollToTop: boolean = false) {
   curIndex = index
-  let top: number
   let scrollFn = null
   if (scrollToTop === true) {
-    const rect = (await query.rect(`.id_${menuCode}`)) as any
-    top = rect.top
     scrollFn = async () => {
-      const { scrollTop } = await query.scrollOffset()
-      uni.pageScrollTo({ scrollTop: top + scrollTop })
+      scrollIntoView.value = ''
+      nextTick(() => (scrollIntoView.value = `.id_${menuCode}`))
     }
   }
   if (!props.data[index]?.children) {
@@ -116,6 +109,10 @@ const handleNavClick = async (menuCode: string, index: number) => {
 }
 </script>
 <style scoped lang="scss">
+.scroll-view {
+  height: 100vh;
+}
+
 .layout {
   display: flex;
   .nav-left {
@@ -140,16 +137,10 @@ const handleNavClick = async (menuCode: string, index: number) => {
 
   .nav-main {
     flex: 1;
-    ::v-deep(.uni-list--border):after {
-      background-color: transparent !important;
-    }
-    ::v-deep(.uni-list-item__container) {
-      overflow: inherit!important;
-    }
-    .nav-list .nav-section:last-child {
-      min-height: 100vh;
-    }
     .nav-section {
+      &:last-child {
+        min-height: 100vh;
+      }
       .nav-title {
         font-size: $uni-font-size-base;
         position: sticky;
@@ -167,7 +158,7 @@ const handleNavClick = async (menuCode: string, index: number) => {
           width: 100%;
         }
         .nav-content-item {
-          min-height: 400rpx;
+          padding: 14rpx 32rpx;
         }
       }
     }

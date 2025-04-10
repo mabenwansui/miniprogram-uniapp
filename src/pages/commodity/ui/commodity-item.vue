@@ -1,40 +1,54 @@
 <template>
   <view class="product-section-item">
     <view class="img" :style="`width: ${props.imgSize}`">
-      <image
-        :style="`width: ${props.imgSize}; height: ${props.imgSize};`"
-        class="img-item"
-        :src="imgUrl"
-        :lazy-load="true"
-      />
+      <comp-commodity-image lazy-load :img-url="props.data?.coverImageUrl" />
     </view>
     <view class="content">
-      <view class="title">{{ props.title }}</view>
-      <view class="description">{{ props.description }}</view>
-      <view class="price">¥ {{ props.price }}</view>
+      <view class="title">{{ props.data.name }}</view>
+      <view class="description">{{ props.data.description }}</view>
+      <view class="price">¥ {{ props.data.price }}</view>
       <view class="action">
-        <addBtn :left="-10" @click="handleAddBtnClick" />
+        <uni-icons
+          class="comp-btn"
+          type="minus"
+          size="26"
+          :color="theme['uni-color-primary']"
+          :onClick="handleSubBtnClick"
+          v-if="props.data.quantity"
+        />
+        <view v-if="props.data.quantity" class="quantity">{{ quantity }}</view>
+        <addBtn :left="-40" :bottom="50" :size="26" :onClick="handleAddBtnClick" />
       </view>
     </view>
   </view>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
-import commodityPlacholderUrl from '@/common/images/commodity-placholder.svg'
+import theme from '@/common/theme'
+import type { Commodity } from '@/common/types/commodity'
 import addBtn from './add-btn.vue'
 interface Props {
-  title: string
-  price: string
-  description?: string
+  parentIndex: number
+  data: Commodity & {
+    /** 购买数量 */
+    quantity: number
+  }
   /** 要带单位, 如200rpx */
-  imgSize?: string
-  imgUrl?: string
+  imgSize?: string  
+  onAddClick?: (item: ClickProps) => void
+  onSubClick?: (item: ClickProps) => void
+}
+export interface ClickProps {
+  parentIndex: number
+  id: string
 }
 const props = defineProps<Props>()
-const imgUrl = computed(() => props.imgUrl || commodityPlacholderUrl)
+const quantity = computed(() => props.data.quantity || 0)
+
 const handleAddBtnClick = () => {
-  console.log('handleAddBtnClick')
+  props.onAddClick?.({ id: props.data.id, parentIndex: props.parentIndex })
 }
+const handleSubBtnClick = () => props.onSubClick?.({ id: props.data.id, parentIndex: props.parentIndex })
 </script>
 <style scoped lang="scss">
 .product-section-item {
@@ -60,9 +74,15 @@ const handleAddBtnClick = () => {
       font-weight: bold;
     }
     .action {
+      display: flex;
       position: absolute;
       right: 0;
       bottom: 2px;
+      .quantity {
+        position: relative;
+        top: 6rpx;
+        padding: 0 8rpx;
+      }
     }
   }
 }

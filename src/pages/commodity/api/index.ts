@@ -9,7 +9,7 @@ interface CategoryResponseList {
   children: CategoryResponseList[]
 }
 export async function getCommodityCategory() {
-  return await post<{ list: CategoryResponseList }>('/api/commodity/category/list')
+  return await post<{ list: CategoryResponseList[] }>('/api/commodity/category/list')
 }
 
 interface GetCommodityListByCategory {
@@ -24,4 +24,16 @@ export async function getCommodityListByCategory({ category, curPage = 1, pageSi
     curPage: number
     total: number
   }>('/api/commodity/search', { category, curPage, pageSize })
+}
+
+interface ChangeCart {
+  commodityId: string
+  quantity: number
+}
+export async function changeCart(params: ChangeCart) {
+  return await post<Record<never, never>>('/api/cart/change', params)
+}
+
+export async function getCartList() {
+  return await post<{ list: Commodity[] }>('/api/cart/list')
 }

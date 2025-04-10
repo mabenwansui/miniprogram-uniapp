@@ -21,6 +21,7 @@ onMounted(() => {
   setTimeout(() => {
     uni.redirectTo({
       url: '/pages/commodity/index'
+      // url: '/pages/about/index'
     })
   }, 500)
 })
