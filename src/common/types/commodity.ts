@@ -1,7 +1,8 @@
 export interface Commodity {
-  id: string
+  commodityId: string
   name: string // 名称
   category?: string // 分类
+  categoryId: string
   imgNames?: [string] // 图片
   coverImageUrl?: string // 封面图片
   originalPrice?: number // 原价
@@ -14,3 +15,4 @@ export interface Commodity {
   createdAt?: Date // 创建时间
   updatedAt?: Date // 更新时间
 }
+

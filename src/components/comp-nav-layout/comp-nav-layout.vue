@@ -51,10 +51,10 @@ import useObserverMenu from './useObserverMenu'
 import useObserverSectionLoad from './useObserverSectionLoad'
 interface Item extends Record<string, any> {
   id: string
-  children: Item[]
+  children?: any[]
 }
 const props = defineProps<{
-  top: number
+  top?: number
   data: Item[]
   onLoad?: (categoryId: string, index: number) => Promise<void>
 }>()

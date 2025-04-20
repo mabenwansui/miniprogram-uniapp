@@ -8,47 +8,41 @@
       <view class="description">{{ props.data.description }}</view>
       <view class="price">¥ {{ props.data.price }}</view>
       <view class="action">
-        <uni-icons
-          class="comp-btn"
-          type="minus"
-          size="26"
-          :color="theme['uni-color-primary']"
-          :onClick="handleSubBtnClick"
-          v-if="props.data.quantity"
+        <comp-add-cart
+          :quantity="quantity"
+          :btn-size="26"
+          :addToCartAnimation="{ left: -40, bottom: 50 }"
+          :onAddClick="handleAddBtnClick"
+          :onSubClick="handleSubBtnClick"
         />
-        <view v-if="props.data.quantity" class="quantity">{{ quantity }}</view>
-        <addBtn :left="-40" :bottom="50" :size="26" :onClick="handleAddBtnClick" />
       </view>
     </view>
   </view>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
-import theme from '@/common/theme'
 import type { Commodity } from '@/common/types/commodity'
-import addBtn from './add-btn.vue'
 interface Props {
-  parentIndex: number
-  data: Commodity & {
-    /** 购买数量 */
-    quantity: number
-  }
+  data: Commodity
+  quantity: number
   /** 要带单位, 如200rpx */
-  imgSize?: string  
+  imgSize?: string
   onAddClick?: (item: ClickProps) => void
   onSubClick?: (item: ClickProps) => void
 }
 export interface ClickProps {
-  parentIndex: number
-  id: string
+  quantity: number
+  categoryId: string
+  commodityId: string
 }
 const props = defineProps<Props>()
-const quantity = computed(() => props.data.quantity || 0)
+const quantity = computed(() => props.quantity || 0)
 
-const handleAddBtnClick = () => {
-  props.onAddClick?.({ id: props.data.id, parentIndex: props.parentIndex })
+const handleAddBtnClick = (quantity: number) => {
+  props.onAddClick?.({ commodityId: props.data.commodityId, quantity, categoryId: props.data.categoryId })
 }
-const handleSubBtnClick = () => props.onSubClick?.({ id: props.data.id, parentIndex: props.parentIndex })
+const handleSubBtnClick = (quantity: number) =>
+  props.onSubClick?.({ commodityId: props.data.commodityId, quantity, categoryId: props.data.categoryId })
 </script>
 <style scoped lang="scss">
 .product-section-item {

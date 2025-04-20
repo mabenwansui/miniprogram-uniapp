@@ -1,27 +1,39 @@
 <template>
+  <uni-transition :mode-class="['fade']" class="mask-warp" :show="listShow" @click="handleCloseList">
+    <view class="mask"></view>
+  </uni-transition>
   <uni-transition mode-class="slide-bottom" class="shopping-cart-wrap" :show="show">
     <view class="shopping-cart-content">
-      <view class="selected-commodity-list">
-        <view class="section-title">
-          已选商品
-          <view class="aside">
-            <uni-icons class="icon-trash" :color="theme['uni-text-color-grey']" type="trash" size="18" />清空
-          </view>
-        </view>
-        <view class="card-list">
-          <view v-for="item in props.list" :key="item.id" class="card-item">
-            <view class="img">
-              <comp-commodity-image :imgUrl="item.coverImageUrl" size="small" />
-            </view>
-            <view class="content">
-              <view class="title">{{ item.name }}</view>
-              <view class="price">¥ {{ item.price }}</view>
-              <view class="action"> </view>
+      <uni-transition mode-class="slide-bottom" :show="listShow">
+        <view class="selected-commodity-list">
+          <view class="section-title">
+            已选商品
+            <view class="aside" @click="handleClear">
+              <uni-icons class="icon-trash" :color="theme['uni-text-color-grey']" type="trash" size="18" />清空
             </view>
           </view>
+          <view class="card-list">
+            <view v-for="item in props.list" :key="item.commodityId" class="card-item">
+              <view class="img">
+                <comp-commodity-image :imgUrl="item.coverImageUrl" size="small" />
+              </view>
+              <view class="content">
+                <view class="title">{{ item.name }}</view>
+                <view class="price">¥ {{ item.price }}</view>
+                <view class="actions">
+                  <comp-add-cart
+                    :quantity="item.quantity"
+                    :btn-size="26"
+                    :onAddClick="(quantity: number) => handleAddBtnClick(item.categoryId, item.commodityId, quantity)"
+                    :onSubClick="(quantity: number) => handleSubBtnClick(item.categoryId, item.commodityId, quantity)"
+                  />
+                </view>
+              </view>
+            </view>
+          </view>
         </view>
-      </view>
-      <view class="summary-wrap">
+      </uni-transition>
+      <view class="summary-wrap" @click="handleTriggerList">
         <view class="summary-wrap-main">
           <uni-badge type="error" :text="badge" absolute="rightTop">
             <image class="icon-shopping-cart" :src="iconShoppingCart" />
@@ -29,42 +41,82 @@
           <view class="amount">{{ totalAmount }}</view>
         </view>
         <view class="actions">
-          <button type="primary" class="btn-primary">去结算</button>
+          <button type="primary" class="btn-primary" @click.stop="handlePay">去结算</button>
         </view>
       </view>
     </view>
   </uni-transition>
 </template>
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
+import type { OrderCommodity } from '@/common/types/order'
 import theme from '@/common/theme'
 import iconShoppingCart from './images/icon-shoppingcart.svg'
 
-export interface CartItem {
-  id: string
-  coverImageUrl: string
-  name: string
-  price: number
+const props = defineProps<{
+  list: OrderCommodity[]
+  onPay?: () => void
+  onClear?: () => void
+  onAddClick?: (item: ClickProps) => void
+  onSubClick?: (item: ClickProps) => void
+}>()
+export interface ClickProps {
   quantity: number
+  categoryId: string
+  commodityId: string
 }
-const props = defineProps<{ list: CartItem[] }>()
 const totalAmount = computed(() => props.list?.reduce((total, item) => total + item.price * item.quantity, 0))
 const badge = computed(() => props.list?.reduce((total, item) => total + item.quantity, 0))
 const show = computed(() => props.list?.length > 0)
+const listShow = ref(false)
+
+watchEffect(() => {
+  if (props.list?.length <= 0) {
+    listShow.value = false
+  }
+})
+
+const handleCloseList = () => {
+  listShow.value = false
+}
+const handleTriggerList = () => {
+  listShow.value = !listShow.value
+}
+const handleClear = () => props?.onClear?.()
+const handleAddBtnClick = (categoryId: string, commodityId: string, quantity: number) => {
+  props?.onAddClick?.({ categoryId, commodityId, quantity })
+}
+const handleSubBtnClick = (categoryId: string, commodityId: string, quantity: number) => {
+  props?.onSubClick?.({ categoryId, commodityId, quantity })
+}
+const handlePay = () => props?.onPay?.()
 </script>
 <style scoped lang="scss">
+.mask-warp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  .mask {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
 .shopping-cart-wrap {
   width: 100vw;
   position: fixed;
-  z-index: 100;
+  z-index: 1010;
   bottom: 0;
   align-items: center;
   .shopping-cart-content {
-    background: #fff;
     .summary-wrap {
       display: flex;
       justify-content: space-between;
       padding: 32rpx 36rpx 32rpx 36rpx;
+      position: relative;
+      z-index: 2;
+      background: #fff;
       .summary-wrap-main {
         display: flex;
         margin-left: 8rpx;
@@ -93,6 +145,7 @@ const show = computed(() => props.list?.length > 0)
     }
   }
   .selected-commodity-list {
+    background: #fff;
     .section-title {
       display: flex;
       justify-content: space-between;
@@ -102,17 +155,21 @@ const show = computed(() => props.list?.length > 0)
         color: $uni-text-color-grey;
         .icon-trash {
           position: relative;
-          top: 4rpx;
+          top: 2rpx;
         }
       }
     }
     .card-list {
       padding: 0 36rpx;
+      max-height: calc(100vh - 340rpx);
+      overflow-y: auto;
       .card-item {
         display: flex;
         margin: 12rpx 0;
-        .content{
+        .content {
+          width: 100%;
           margin-left: 20rpx;
+          position: relative;
           .title {
             font-size: $uni-font-size-lg;
             height: 62rpx;
@@ -121,6 +178,10 @@ const show = computed(() => props.list?.length > 0)
             font-size: $uni-font-size-lg;
             font-weight: bold;
             color: $uni-color-error;
+          }
+          .actions {
+            position: absolute;
+            right: 0;
           }
         }
       }

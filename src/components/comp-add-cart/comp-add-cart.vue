@@ -1,20 +1,20 @@
 <template>
   <view class="action">
     <uni-icons
-      v-if="props.quantity"
+      v-if="quantity > 0"
       class="comp-btn"
       type="minus"
-      size="26"
+      :size="btnSize"
       :color="theme['uni-color-primary']"
       @click="handleSubBtnClick"
     />
-    <view v-if="props.quantity" class="quantity">{{ quantity }}</view>
+    <view v-if="quantity > 0" class="quantity">{{ quantity }}</view>
     <addBtn
       v-if="props.addToCartAnimation"
       :left="props.addToCartAnimation.left"
       :bottom="props.addToCartAnimation.bottom"
       :size="btnSize"
-      @click="handleAddBtnClick"
+      :onClick="handleAddBtnClick"
     />
     <uni-icons
       v-else
@@ -32,7 +32,7 @@ import { computed } from 'vue'
 import theme from '@/common/theme'
 import addBtn from './add-btn.vue'
 interface Props {
-  quantity: number
+  quantity?: number
   btnSize?: number
   addToCartAnimation?: {
     left: number
@@ -48,8 +48,8 @@ export interface ClickProps {
 const props = defineProps<Props>()
 const quantity = computed(() => props.quantity || 0)
 const btnSize = computed(() => props.btnSize || 26)
-const handleAddBtnClick = () => props.onAddClick?.(props.quantity + 1)
-const handleSubBtnClick = () => props.onSubClick?.(Math.max(props.quantity - 1, 0))
+const handleAddBtnClick = () => props.onAddClick?.(quantity.value + 1)
+const handleSubBtnClick = () => props.onSubClick?.(Math.max(quantity.value - 1, 0))
 </script>
 
 <style scoped lang="scss">
@@ -59,8 +59,9 @@ const handleSubBtnClick = () => props.onSubClick?.(Math.max(props.quantity - 1, 
   right: 0;
   bottom: 2px;
   .quantity {
+    line-height: 54rpx;
     position: relative;
-    top: 6rpx;
+    min-width: 22rpx;
     padding: 0 8rpx;
   }
 }

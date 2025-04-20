@@ -1,7 +1,7 @@
 <template>
   <image
     :style="`width: ${size}; height: ${size};`"
-    :class="[`img-item`, `com-commodity-image-${sizeClass}`, props.class]"
+    :class="[`img-item`, `com-commodity-image-${sizeClass}`]"
     :src="imgUrl"
     :lazy-load="lazyLoad"
   />
@@ -12,7 +12,6 @@ import commodityPlacholderUrl from '@/common/images/commodity-placholder.svg'
 interface Props {
   size?: 'middle' | 'large' | 'small'
   lazyLoad?: boolean
-  class?: string
   imgUrl?: string
 }
 const props = defineProps<Props>()

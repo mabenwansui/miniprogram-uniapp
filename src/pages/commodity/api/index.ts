@@ -1,4 +1,5 @@
 import type { Commodity } from '@/common/types/commodity'
+import type { OrderInfo } from '@/common/types/order'
 import { post } from '@/common/js/request'
 
 interface CategoryResponseList {
@@ -36,4 +37,8 @@ export async function changeCart(params: ChangeCart) {
 
 export async function getCartList() {
   return await post<{ list: Commodity[] }>('/api/cart/list')
+}
+
+export async function createOrder(props: Omit<OrderInfo, 'orderStatus' | 'paymentStatus' | 'completedAt'>) {
+  return await post<{ orderId: string }>('/api/order/create', props)
 }

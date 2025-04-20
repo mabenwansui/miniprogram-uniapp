@@ -14,35 +14,49 @@
         <view class="content"></view>
       </template>
       <template #navItem="{ item }">{{ item.node }}</template>
-      <template #commodityTitle="{ item, index }">{{ item.node }}</template>
-      <template #commodityItem="{ item, parentIndex }">
+      <template #commodityTitle="{ item }">{{ item.node }}</template>
+      <template #commodityItem="{ item }">
         <commodity-item
-          :parentIndex="parentIndex"
+          :quantity="commodityQuantityRecord[item.id]"
           :data="item"
           :imgSize="`160rpx`"
-          :onAddClick="handleAddClick"
-          :onSubClick="handleSubClick"
+          :onAddClick="handleQuantityClick"
+          :onSubClick="handleQuantityClick"
         />
       </template>
-      <template #footer><ShoppingCart :list="cart" /></template>
+      <template #footer>
+        <ShoppingCart
+          :list="cart"
+          :onPay="handlePay"
+          :onClear="handleClear"
+          :onAddClick="handleQuantityClick"
+          :onSubClick="handleQuantityClick"
+        />
+      </template>
     </comp-nav-layout>
   </view>
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { getCommodityCategory, getCommodityListByCategory, changeCart, getCartList } from './api'
+import type { Commodity } from '@/common/types/commodity'
+import type { OrderCommodity } from '@/common/types/order'
+import { ORDER_TYPE, PAYMENT_TYPE } from '@/common/types/order'
+import { getCommodityCategory, getCommodityListByCategory, changeCart, getCartList, createOrder } from './api'
+import type { ClickProps as AddToCartProps } from './ui/commodity-item.vue'
 import CommodityItem from './ui/commodity-item.vue'
 import ShoppingCart from './ui/shopping-cart/shopping-cart.vue'
-import type { CartItem } from './ui/shopping-cart/shopping-cart.vue'
 interface DataList extends Record<string, any> {
   id: string
-  children?: DataList[]
+  node: string
+  children?: Commodity[]
 }
 const dataList = ref<DataList[]>([])
 const curPage = ref(1)
-const cart = ref<CartItem[]>([])
+const cart = ref<OrderCommodity[]>([])
+const commodityQuantityRecord = ref<Record<string, number>>({})
 
 onMounted(async () => {
+  // 初始加载商品分类数据，而后在handleLoad中根据当前选中的分类加载对应的商品列表
   async function setNav() {
     const { flag, data } = await getCommodityCategory()
     if (flag === 1) {
@@ -56,6 +70,7 @@ onMounted(async () => {
 })
 
 const handleLoad = async (categoryId: string, index: number) => {
+  // 加载当前选中分类对应的商品列表
   const { flag, data } = await getCommodityListByCategory({
     category: categoryId,
     curPage: 1
@@ -66,8 +81,9 @@ const handleLoad = async (categoryId: string, index: number) => {
   }
 }
 
-function updateCart(cartItem: CartItem) {
-  const index = cart.value.findIndex((item) => item.id === cartItem.id)
+function updateCart(cartItem: OrderCommodity) {
+  commodityQuantityRecord.value[cartItem.commodityId] = cartItem.quantity
+  const index = cart.value.findIndex((item) => item.commodityId === cartItem.commodityId)
   if (index > -1) {
     if (cartItem.quantity <= 0) {
       cart.value.splice(index, 1)
@@ -78,25 +94,32 @@ function updateCart(cartItem: CartItem) {
     cart.value.push(cartItem)
   }
 }
-
-function SetCart(parentIndex: number, id: string, type: 'add' | 'sub') {
-  const item = dataList.value[parentIndex]?.children?.find((item) => item.id === id)
+const handleQuantityClick = async ({ categoryId, commodityId, quantity }: AddToCartProps) => {
+  const item = dataList.value
+    .find((item) => item.id === categoryId)
+    ?.children?.find((item) => item.commodityId === commodityId)
   if (!item) return
-  let quantity = item.quantity || 0
-  if (type === 'add') {
-    quantity++
-  } else {
-    quantity = Math.max(quantity - 1, 0)
-  }
-  item.quantity = quantity
-  updateCart({ id: item.id, name: item.name, price: item.price, coverImageUrl: item.coverImageUrl, quantity: quantity })
+  updateCart({
+    commodityId: item.commodityId,
+    name: item.name,
+    categoryId: item.categoryId,
+    price: item.price,
+    coverImageUrl: item.coverImageUrl,
+    quantity
+  })
 }
-
-const handleAddClick = async ({ parentIndex, id }: { parentIndex: number; id: string }) => {
-  SetCart(parentIndex, id, 'add')
+const handleClear = () => {
+  commodityQuantityRecord.value = {}
+  cart.value = []
 }
-const handleSubClick = ({ parentIndex, id }: { parentIndex: number; id: string }) => {
-  SetCart(parentIndex, id, 'sub')
+const handlePay = async () => {
+  const { flag, data } = await createOrder({
+    orderType: ORDER_TYPE.DINE_IN,
+    paymentType: PAYMENT_TYPE.WECHAT,
+    table_number: '1',
+    commoditys: cart.value.slice()
+  })
+  // createOrder()
 }
 </script>
 <style scoped lang="scss">
