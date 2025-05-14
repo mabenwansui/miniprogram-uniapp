@@ -1,8 +1,9 @@
+import type { Category } from '@/common/types/category'
+
 export interface Commodity {
-  commodityId: string
+  id: string
   name: string // 名称
-  category?: string // 分类
-  categoryId: string
+  category?: Category // 分类
   imgNames?: [string] // 图片
   coverImageUrl?: string // 封面图片
   originalPrice?: number // 原价

@@ -1,25 +1,29 @@
 <template>
-  <view class="content">
+  <view class="content page">
     <image class="logo" src="/static/logo.png" />
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
+    <view @click="handleClick">跳转到商品页</view>
   </view>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { post } from '@/common/js/request'
+
 const title = ref('Hello')
-
+const handleClick = () => {
+  uni.navigateTo({
+    url: '/pages/commodity/index'
+  })
+}
 onMounted(() => {
-  async function init() {
-    const rest = await post('/api/commodity/category/list')
-    console.log('rest:::::', rest)
-  }
-  init()
+  setTimeout(() => {
+    uni.redirectTo({
+      url: '/pages/commodity/list/page?store=67e2c54ae2b84713db7b72ec'
+    })
+  }, 500)
 })
-
 </script>
 
 <style>

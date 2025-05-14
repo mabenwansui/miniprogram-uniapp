@@ -12,8 +12,7 @@
           :quantity="quantity"
           :btn-size="26"
           :addToCartAnimation="{ left: -40, bottom: 50 }"
-          :onAddClick="handleAddBtnClick"
-          :onSubClick="handleSubBtnClick"
+          :onChange="handleOnChange"
         />
       </view>
     </view>
@@ -27,22 +26,14 @@ interface Props {
   quantity: number
   /** 要带单位, 如200rpx */
   imgSize?: string
-  onAddClick?: (item: ClickProps) => void
-  onSubClick?: (item: ClickProps) => void
-}
-export interface ClickProps {
-  quantity: number
-  categoryId: string
-  commodityId: string
+  onQuantityChange?: (item: Commodity, quantity: number) => void
 }
 const props = defineProps<Props>()
 const quantity = computed(() => props.quantity || 0)
 
-const handleAddBtnClick = (quantity: number) => {
-  props.onAddClick?.({ commodityId: props.data.commodityId, quantity, categoryId: props.data.categoryId })
+const handleOnChange = (quantity: number) => {
+  props.onQuantityChange?.(props.data, quantity)
 }
-const handleSubBtnClick = (quantity: number) =>
-  props.onSubClick?.({ commodityId: props.data.commodityId, quantity, categoryId: props.data.categoryId })
 </script>
 <style scoped lang="scss">
 .product-section-item {

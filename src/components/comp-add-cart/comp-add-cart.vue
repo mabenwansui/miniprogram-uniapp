@@ -38,8 +38,7 @@ interface Props {
     left: number
     bottom: number
   }
-  onAddClick?: (quantity: number) => void
-  onSubClick?: (quantity: number) => void
+  onChange?: (quantity: number) => void
 }
 export interface ClickProps {
   parentIndex: number
@@ -48,8 +47,8 @@ export interface ClickProps {
 const props = defineProps<Props>()
 const quantity = computed(() => props.quantity || 0)
 const btnSize = computed(() => props.btnSize || 26)
-const handleAddBtnClick = () => props.onAddClick?.(quantity.value + 1)
-const handleSubBtnClick = () => props.onSubClick?.(Math.max(quantity.value - 1, 0))
+const handleAddBtnClick = () => props.onChange?.(quantity.value + 1)
+const handleSubBtnClick = () => props.onChange?.(Math.max(quantity.value - 1, 0))
 </script>
 
 <style scoped lang="scss">

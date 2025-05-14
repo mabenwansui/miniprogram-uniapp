@@ -1,5 +1,5 @@
 <template>
-  <view class="page">
+  <view class="commodity-list page">
     <comp-nav-layout :data="dataList" :onLoad="handleLoad">
       <template #header>
         <view class="banner">
@@ -20,17 +20,16 @@
           :quantity="commodityQuantityRecord[item.id]"
           :data="item"
           :imgSize="`160rpx`"
-          :onAddClick="handleQuantityClick"
-          :onSubClick="handleQuantityClick"
+          :onQuantityChange="handleQuantityChange"
         />
       </template>
       <template #footer>
         <ShoppingCart
+          :quantityRecord="commodityQuantityRecord"
           :list="cart"
+          :onQuantityChange="handleQuantityChange"
           :onPay="handlePay"
           :onClear="handleClear"
-          :onAddClick="handleQuantityClick"
-          :onSubClick="handleQuantityClick"
         />
       </template>
     </comp-nav-layout>
@@ -38,13 +37,14 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
 import type { Commodity } from '@/common/types/commodity'
 import type { OrderCommodity } from '@/common/types/order'
-import { ORDER_TYPE, PAYMENT_TYPE } from '@/common/types/order'
-import { getCommodityCategory, getCommodityListByCategory, changeCart, getCartList, createOrder } from './api'
-import type { ClickProps as AddToCartProps } from './ui/commodity-item.vue'
-import CommodityItem from './ui/commodity-item.vue'
-import ShoppingCart from './ui/shopping-cart/shopping-cart.vue'
+import { getCommodityCategory, getCommodityListByCategory } from '../_api/commodity'
+import { updateCart, deleteCart, getCartList } from '../_api/cart'
+import { createOrder } from '../_api/order'
+import CommodityItem from '../_ui/commodity-item/commodity-item.vue'
+import ShoppingCart from '../_ui/shopping-cart/shopping-cart.vue'
 interface DataList extends Record<string, any> {
   id: string
   node: string
@@ -52,12 +52,19 @@ interface DataList extends Record<string, any> {
 }
 const dataList = ref<DataList[]>([])
 const curPage = ref(1)
-const cart = ref<OrderCommodity[]>([])
+const cart = ref<Commodity[]>([])
 const commodityQuantityRecord = ref<Record<string, number>>({})
+let storeId: string
+
+onLoad((searchParams) => {
+  if (searchParams?.store) {
+    storeId = searchParams?.store
+  }
+})
 
 onMounted(async () => {
   // 初始加载商品分类数据，而后在handleLoad中根据当前选中的分类加载对应的商品列表
-  async function setNav() {
+  async function loadNav() {
     const { flag, data } = await getCommodityCategory()
     if (flag === 1) {
       dataList.value = data.list.map((item) => ({
@@ -66,7 +73,17 @@ onMounted(async () => {
       }))
     }
   }
-  await setNav()
+  async function loadCart() {
+    const { flag, data } = await getCartList()
+    if (flag === 1) {
+      data?.list?.forEach((item: OrderCommodity) => {
+        cart.value.push(item.commodity)
+        commodityQuantityRecord.value[item.commodity.id] = item.quantity
+      })
+    }
+  }
+  await loadNav()
+  await loadCart()
 })
 
 const handleLoad = async (categoryId: string, index: number) => {
@@ -81,49 +98,40 @@ const handleLoad = async (categoryId: string, index: number) => {
   }
 }
 
-function updateCart(cartItem: OrderCommodity) {
-  commodityQuantityRecord.value[cartItem.commodityId] = cartItem.quantity
-  const index = cart.value.findIndex((item) => item.commodityId === cartItem.commodityId)
+const handleQuantityChange = async (item: Commodity, quantity: number) => {
+  commodityQuantityRecord.value[item.id] = quantity
+  const index = cart.value.findIndex((_item) => _item.id === item.id)
   if (index > -1) {
-    if (cartItem.quantity <= 0) {
+    if (quantity <= 0) {
       cart.value.splice(index, 1)
-      return
     }
-    cart.value[index].quantity = cartItem.quantity
   } else {
-    cart.value.push(cartItem)
+    cart.value.push(item)
   }
-}
-const handleQuantityClick = async ({ categoryId, commodityId, quantity }: AddToCartProps) => {
-  const item = dataList.value
-    .find((item) => item.id === categoryId)
-    ?.children?.find((item) => item.commodityId === commodityId)
-  if (!item) return
-  updateCart({
-    commodityId: item.commodityId,
-    name: item.name,
-    categoryId: item.categoryId,
-    price: item.price,
-    coverImageUrl: item.coverImageUrl,
-    quantity
-  })
+  updateCart({ commodityId: item.id, quantity: quantity })
 }
 const handleClear = () => {
   commodityQuantityRecord.value = {}
   cart.value = []
+  deleteCart()
 }
 const handlePay = async () => {
   const { flag, data } = await createOrder({
-    orderType: ORDER_TYPE.DINE_IN,
-    paymentType: PAYMENT_TYPE.WECHAT,
-    table_number: '1',
-    commoditys: cart.value.slice()
+    storeId,
+    commoditys: cart.value.map((item) => ({
+      commodityId: item.id,
+      quantity: commodityQuantityRecord.value[item.id]
+    }))
   })
-  // createOrder()
+  if (flag === 1) {
+    uni.navigateTo({
+      url: `/pages/order/page?order=${data.id}`
+    })
+  }
 }
 </script>
 <style scoped lang="scss">
-.page {
-  font-size: $uni-font-size-base;
+.commodity-list {
+  background-color: #fff;
 }
 </style>

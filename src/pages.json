@@ -1,41 +1,51 @@
 {
   "pages": [
     {
-      "path": "pages/index/index",
+      "path": "pages/index/page",
       "style": {
         "navigationBarTitleText": "uni-app"
       }
     },
     {
-      "path": "pages/commodity/index",
-      "renderer": "skyline",
+      "url": "pages/commodity/page",
+      "path": "pages/commodity/page",
       "style": {
-        "navigationBarTitleText": "商品详情"
+        "navigationBarTitleText": "商品"
       }
     },
     {
-      "path": "pages/about/index",
+      "path": "pages/commodity/list/page",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "商品-列表"
+      }
+    },
+    {
+      "path": "pages/order/page",
+      "style": {
+        "navigationBarTitleText": "订单"
       }
     }
   ],
-  // "tabBar": {
-  //   "color": "#7A7E83",
-  //   "selectedColor": "#3cc51f",
-  //   "backgroundColor": "#ffffff",
-  //   "list": [
-  //     {
-  //       "pagePath": "pages/index/index",
-  //       "text": "首页"
-  //     }
-  //   ]
-  // },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/page",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/commodity/page",
+        "text": "商品"
+      }      
+    ]
+  },
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#ff0000"
   },
   "easycom": {
     "autoscan": true,

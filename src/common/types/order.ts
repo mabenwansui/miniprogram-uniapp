@@ -1,7 +1,7 @@
-import type { Commodity } from "./commodity";
+import type { Commodity } from './commodity'
 
-export type OrderCommodity = Pick<Commodity, 'categoryId' | 'price' | 'coverImageUrl' | 'description' | 'name'> & {
-  commodityId: string,
+export interface OrderCommodity {
+  commodity: Pick<Commodity, 'id' | 'name' | 'originalPrice' | 'category' | 'price' | 'coverImageUrl'>
   quantity: number
 }
 
@@ -56,7 +56,7 @@ export interface OrderInfo {
   orderStatus?: ORDER_STATUS // 订单状态
   paymentType: PAYMENT_TYPE // 支付类型
   paymentStatus?: PAYMENT_STATUS // 支付状态
-  table_number?: string // 桌号  
+  table_number?: string // 桌号
   remark?: string
   commoditys: OrderCommodity[]
 }

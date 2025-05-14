@@ -13,7 +13,7 @@
             </view>
           </view>
           <view class="card-list">
-            <view v-for="item in props.list" :key="item.commodityId" class="card-item">
+            <view v-for="item in props.list" :key="item.id" class="card-item">
               <view class="img">
                 <comp-commodity-image :imgUrl="item.coverImageUrl" size="small" />
               </view>
@@ -22,10 +22,9 @@
                 <view class="price">¥ {{ item.price }}</view>
                 <view class="actions">
                   <comp-add-cart
-                    :quantity="item.quantity"
+                    :quantity="props.quantityRecord[item.id]"
                     :btn-size="26"
-                    :onAddClick="(quantity: number) => handleAddBtnClick(item.categoryId, item.commodityId, quantity)"
-                    :onSubClick="(quantity: number) => handleSubBtnClick(item.categoryId, item.commodityId, quantity)"
+                    :onChange="(quantity: number)=> handleChange(item, quantity)"
                   />
                 </view>
               </view>
@@ -49,24 +48,19 @@
 </template>
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue'
-import type { OrderCommodity } from '@/common/types/order'
+import type { Commodity } from '@/common/types/commodity'
 import theme from '@/common/theme'
 import iconShoppingCart from './images/icon-shoppingcart.svg'
 
 const props = defineProps<{
-  list: OrderCommodity[]
+  quantityRecord: Record<string, number>
+  list: Commodity[]
   onPay?: () => void
   onClear?: () => void
-  onAddClick?: (item: ClickProps) => void
-  onSubClick?: (item: ClickProps) => void
+  onQuantityChange?: (item: Commodity, quantity: number) => void
 }>()
-export interface ClickProps {
-  quantity: number
-  categoryId: string
-  commodityId: string
-}
-const totalAmount = computed(() => props.list?.reduce((total, item) => total + item.price * item.quantity, 0))
-const badge = computed(() => props.list?.reduce((total, item) => total + item.quantity, 0))
+const totalAmount = computed(() => props.list?.reduce((total, item) => total + item.price * props.quantityRecord[item.id], 0))
+const badge = computed(() => props.list?.reduce((total, item) => total + props.quantityRecord[item.id], 0))
 const show = computed(() => props.list?.length > 0)
 const listShow = ref(false)
 
@@ -75,7 +69,6 @@ watchEffect(() => {
     listShow.value = false
   }
 })
-
 const handleCloseList = () => {
   listShow.value = false
 }
@@ -83,11 +76,8 @@ const handleTriggerList = () => {
   listShow.value = !listShow.value
 }
 const handleClear = () => props?.onClear?.()
-const handleAddBtnClick = (categoryId: string, commodityId: string, quantity: number) => {
-  props?.onAddClick?.({ categoryId, commodityId, quantity })
-}
-const handleSubBtnClick = (categoryId: string, commodityId: string, quantity: number) => {
-  props?.onSubClick?.({ categoryId, commodityId, quantity })
+const handleChange = (item: Commodity, quantity: number) => {
+  props?.onQuantityChange?.(item, quantity)
 }
 const handlePay = () => props?.onPay?.()
 </script>

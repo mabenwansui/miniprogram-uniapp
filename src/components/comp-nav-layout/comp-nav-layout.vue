@@ -118,7 +118,7 @@ const handleNavClick = async (menuCode: string, index: number) => {
   .nav-left {
     width: 214rpx;
     overflow-y: auto;
-    background-color: $uni-bg-color-container;
+    background-color: $uni-bg-color-grey;
     position: sticky;
     height: 100vh;
     .nav-left-item {
@@ -130,7 +130,7 @@ const handleNavClick = async (menuCode: string, index: number) => {
       margin-bottom: 6px;
       &.active {
         color: $uni-color-primary-secondary;
-        background-color: $uni-bg-color;
+        background-color: #fff;
       }
     }
   }
@@ -144,7 +144,7 @@ const handleNavClick = async (menuCode: string, index: number) => {
       .nav-title {
         font-size: $uni-font-size-base;
         position: sticky;
-        background: $uni-bg-color;
+        background: #fff;
         line-height: 40rpx;
         padding: 16rpx 0 16rpx 15px;
         z-index: 10;
