@@ -1,6 +1,6 @@
 import { createSSRApp } from 'vue'
 import App from './App.vue'
-import '@/common/css/theme.scss'
+import '@/common/css/common.scss'
 
 export function createApp() {
   const app = createSSRApp(App)

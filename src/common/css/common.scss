@@ -2,3 +2,7 @@ page {
   font-size: $uni-font-size-base;
   background-color: $uni-bg-color; /* 这里设置全局背景色为白色，可根据需要修改颜色值 */
 }
+
+.uni-easyinput__content-input::placeholder {
+  font-size: 26px;
+}

@@ -1,6 +1,12 @@
 {
   "pages": [
     {
+      "path": "pages/address/form/page",
+    },    
+    {
+      "path": "pages/address/page",
+    },
+    {
       "path": "pages/index/page",
       "style": {
         "navigationBarTitleText": "uni-app"
@@ -50,7 +56,8 @@
   "easycom": {
     "autoscan": true,
     "custom": {
-      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+      "^comp-(.*)-(.*)": "@/components/comp-$1/comp-$1-$2/comp-$1-$2.vue"
     }
   }
 }

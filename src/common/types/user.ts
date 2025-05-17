@@ -1,4 +1,10 @@
 import { ROLE } from './role'
+
+export enum SexType {
+  male = 'male',
+  female = 'female'
+}
+
 export interface User {
   id?: string // 数据库自增id
   userId?: string // 简短的用户ID, 用于显示、登录信息

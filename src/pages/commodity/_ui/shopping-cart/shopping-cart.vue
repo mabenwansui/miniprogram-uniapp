@@ -130,6 +130,7 @@ const handlePay = () => props?.onPay?.()
         .btn-primary {
           padding-left: 48rpx;
           padding-right: 48rpx;
+          border-radius: $uni-border-radius-round;
         }
       }
     }
