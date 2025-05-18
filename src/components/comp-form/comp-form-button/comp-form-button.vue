@@ -1,21 +1,30 @@
 <template>
   <button
     class="comp-btn"
+    :class="props.class"
+    :style="props.style"
     :size="props.size"
     :type="props.type"
     :plain="props.plain"
     :disabled="props.disabled"
     :loading="props.loading"
     :form-type="props.formType"
-    @click="handleClick"
+    @click.stop="handleClick"
   >
+    {{ props.class }}
     <slot />
   </button>
 </template>
+<script lang="ts">
+export default {
+  inheritAttrs: false
+}
+</script>
 <script setup lang="ts">
 import type { StyleValue } from 'vue'
+import { useAttrs } from 'vue'
 interface Props {
-  class?: any
+  class?: string | string[] | Record<string, boolean>
   style?: StyleValue
   size: 'default' | 'mini'
   type: 'primary' | 'default' | 'warn'
@@ -25,6 +34,8 @@ interface Props {
   formType: 'submit' | 'reset'
 }
 const props = defineProps<Partial<Props>>()
+const attrs = useAttrs()
+console.log('attr', attrs)
 const emit = defineEmits<{ (e: 'click', event: Event): void }>()
 const handleClick = (event: Event) => emit('click', event)
 </script>

@@ -1,12 +1,6 @@
 {
   "pages": [
     {
-      "path": "pages/address/form/page",
-    },    
-    {
-      "path": "pages/address/page",
-    },
-    {
       "path": "pages/index/page",
       "style": {
         "navigationBarTitleText": "uni-app"
@@ -32,6 +26,25 @@
       }
     }
   ],
+  "subPackages  ": [
+    {
+      "root": "address",
+      "pages": [
+        {
+          "path": "pages-subpackages/address/page",
+          "style": {
+            "navigationBarTitleText": "收货地址管理"
+          }
+        },
+        {
+          "path": "pages-subpackages/address/form/page",
+          "style": {
+            "navigationBarTitleText": "地址编辑"
+          }
+        }
+      ]
+    }
+  ],
   "tabBar": {
     "color": "#7A7E83",
     "selectedColor": "#3cc51f",
@@ -44,7 +57,7 @@
       {
         "pagePath": "pages/commodity/page",
         "text": "商品"
-      }      
+      }
     ]
   },
   "globalStyle": {

@@ -7,7 +7,7 @@
     }"
     @click="handleClick"
   >
-    {{ errMsg || value || placeholder }}
+    {{ errMsg || value || props.placeholder }}
   </view>
 </template>
 <script setup lang="ts">
@@ -20,16 +20,19 @@ interface Values {
   longitude?: number
 }
 
-const props = defineProps<{
+interface Props {
   value?: Values
   inputBorder?: boolean
   placeholder?: string
   placeholderStyle?: string
-}>()
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  placeholder: '请选择收货地址'
+})
 
 const model = defineModel<Values>()
 const value = computed(() => model.value?.name || model.value?.address || props.value?.name)
-const placeholder = computed(() => props?.placeholder || '请选择收货地址')
 const errMsg = ref('')
 
 const emit = defineEmits(['change'])

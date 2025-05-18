@@ -1,6 +1,6 @@
 <template>
   <uni-easyinput
-    :value="value"
+    :value="model"
     :type="props.type"
     :clearable="props.clearable"
     :autoHeight="props.autoHeight"
@@ -33,9 +33,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
-
-const props = defineProps<{
+import { computed } from 'vue'
+interface Props {
   // 严格遵循文档属性顺序
   value?: string | number
   modelValue?: string | number
@@ -62,13 +61,17 @@ const props = defineProps<{
   adjustPosition?: boolean
   primaryColor?: string
   cursorSpacing?: number
-}>()
+}
+const props = withDefaults(defineProps<Props>(), {
+  trim: true,
+  inputBorder: true,
+  passwordIcon: true
+})
 
-const value = computed(() => props.modelValue !== undefined ? props.modelValue : props.value)
+const model = defineModel<string | number>()
 const placeholderStyle = computed(() => `font-size: 14px; ${props.placeholderStyle}`)
 
 const emit = defineEmits([
-  'update:modelValue',
   'click',
   'input',
   'clear',
@@ -80,18 +83,9 @@ const emit = defineEmits([
   'keyboardheightchange'
 ])
 
-// 实现 v-model 双向绑定
-const innerValue = ref(props.modelValue)
-watch(
-  () => props.modelValue,
-  (val) => (innerValue.value = val)
-)
-
-const handleInput = (e: CustomEvent) => {
-  const value = e.detail?.value || ''
-  innerValue.value = value
-  emit('update:modelValue', value)
-  emit('input', e)
+const handleInput = (val: string) => {
+  model.value = val
+  emit('input', val)
 }
 const handleClear = () => emit('clear')
 const handleClick = () => emit('click')

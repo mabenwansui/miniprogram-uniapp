@@ -2,32 +2,25 @@
   <view class="address-page page">
     <comp-card>
       <view class="forms">
-        <uni-forms :label-width="54" ref="formRef" :border="true" :modelValue="formData" :rules="rules">
+        <uni-forms :label-width="54" ref="formRef" :border="true" :model="formData" :rules="rules">
           <uni-forms-item class="form-item" label="联系人" name="name">
-            <uni-easyinput
+            <comp-form-input
               type="text"
               v-model="formData.name"
               placeholder="姓名"
+              :input-border="false"
               :clearable="false"
-              :inputBorder="false"
-              placeholderStyle="font-size: 14px"
             />
             <uni-data-checkbox class="sex" mode="tag" v-model="formData.sex" :localdata="sexOption" />
           </uni-forms-item>
           <uni-forms-item label="手机号" name="phoneNumber">
-            <comp-form-input type="text" v-model="formData.phoneNumber" placeholder="手机号" :inputBorder="false" />
+            <comp-form-input type="text" v-model="formData.phoneNumber" placeholder="手机号" :input-border="false" />
           </uni-forms-item>
           <uni-forms-item label="地址" name="address">
             <comp-form-address v-model="formData.address" />
           </uni-forms-item>
           <uni-forms-item label="门牌号" name="details">
-            <uni-easyinput
-              type="text"
-              v-model="formData.details"
-              placeholder="选择收货地址"
-              :inputBorder="false"
-              placeholderStyle="font-size: 14px"
-            />
+            <comp-form-input type="text" v-model="formData.details" placeholder="选择收货地址" :input-border="false" />
           </uni-forms-item>
         </uni-forms>
       </view>
@@ -38,11 +31,10 @@
   </view>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, getCurrentInstance } from 'vue'
 import { SexType } from '@/common/types/user'
 
 const formRef = ref<any>(null)
-
 const sexOption = [
   {
     value: SexType.male,
@@ -53,7 +45,6 @@ const sexOption = [
     text: '女士'
   }
 ]
-
 const formData = ref({
   name: '',
   sex: SexType.male,
@@ -92,8 +83,12 @@ const rules = ref({
 })
 
 const handleSubmit = async () => {
-  console.log(formData.value)
   const data = await formRef.value?.validate()
+  const instance: any = getCurrentInstance()?.proxy
+  if (!instance) {
+    const eventChannel = instance.getOpenerEventChannel()
+    eventChannel.emit('createAddress', { data })
+  }
 }
 </script>
 <style scoped lang="scss">

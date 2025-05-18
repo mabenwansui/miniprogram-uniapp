@@ -40,7 +40,7 @@
           <view class="amount">{{ totalAmount }}</view>
         </view>
         <view class="actions">
-          <button type="primary" class="btn-primary" @click.stop="handlePay">去结算</button>
+          <comp-form-button type="primary" class="btn-primary" @click.stop="handlePay">去结算</comp-form-button>
         </view>
       </view>
     </view>
