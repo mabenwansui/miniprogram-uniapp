@@ -4,7 +4,7 @@
       <view class="forms">
         <uni-forms :label-width="54" ref="formRef" :border="true" :model="formData" :rules="rules">
           <uni-forms-item class="form-item" label="联系人" name="name">
-            <comp-form-input
+            <uni-easyinput
               type="text"
               v-model="formData.name"
               placeholder="姓名"
@@ -14,19 +14,19 @@
             <uni-data-checkbox class="sex" mode="tag" v-model="formData.sex" :localdata="sexOption" />
           </uni-forms-item>
           <uni-forms-item label="手机号" name="phoneNumber">
-            <comp-form-input type="text" v-model="formData.phoneNumber" placeholder="手机号" :input-border="false" />
+            <uni-easyinput type="text" v-model="formData.phoneNumber" placeholder="手机号" :input-border="false" />
           </uni-forms-item>
           <uni-forms-item label="地址" name="address">
             <comp-form-address v-model="formData.address" />
           </uni-forms-item>
           <uni-forms-item label="门牌号" name="details">
-            <comp-form-input type="text" v-model="formData.details" placeholder="选择收货地址" :input-border="false" />
+            <uni-easyinput type="text" v-model="formData.details" placeholder="选择收货地址" :input-border="false" />
           </uni-forms-item>
         </uni-forms>
       </view>
     </comp-card>
     <view class="action">
-      <comp-form-button type="primary" @click="handleSubmit">保存</comp-form-button>
+      <button type="primary" @click="handleSubmit">保存</button>
     </view>
   </view>
 </template>

@@ -3,6 +3,10 @@ page {
   background-color: $uni-bg-color; /* 这里设置全局背景色为白色，可根据需要修改颜色值 */
 }
 
+button[type="primary"] {
+  background-color: $uni-color-primary;
+}
+
 .uni-easyinput__content-input::placeholder {
   font-size: 26px;
 }

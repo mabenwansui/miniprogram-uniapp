@@ -40,7 +40,7 @@
           <view class="amount">{{ totalAmount }}</view>
         </view>
         <view class="actions">
-          <comp-form-button type="primary" class="btn-primary" @click.stop="handlePay">去结算</comp-form-button>
+          <button type="primary" class="btn-primary" @click.stop="handlePay">去结算</button>
         </view>
       </view>
     </view>
@@ -51,6 +51,8 @@ import { computed, ref, watchEffect } from 'vue'
 import type { Commodity } from '@/common/types/commodity'
 import theme from '@/common/theme'
 import iconShoppingCart from './images/icon-shoppingcart.svg'
+
+defineOptions({ inheritAttrs: false })
 
 const props = defineProps<{
   quantityRecord: Record<string, number>
@@ -81,7 +83,7 @@ const handleChange = (item: Commodity, quantity: number) => {
 }
 const handlePay = () => props?.onPay?.()
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 .mask-warp {
   position: fixed;
   top: 0;

@@ -54,8 +54,7 @@
     "appid": "wxea50882c7551199f",
     "setting": {
       "urlCheck": false
-    },
-    "mergeVirtualHostAttributes": true, 
+    }, 
     "usingComponents": true,
 		"permission": {
 			"scope.userLocation": {
