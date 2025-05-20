@@ -33,19 +33,17 @@ const props = withDefaults(defineProps<Props>(), {
 
 const model = defineModel<Values>()
 const value = computed(() => model.value?.name || model.value?.address || props.value?.name)
-const errMsg = ref('')
-
+const errMsg = ref<string | null>(null)
 const emit = defineEmits(['change'])
 
 const handleClick = () => {
   uni.chooseLocation({
     success: function (res) {
+      errMsg.value = null
       const { name, address, latitude, longitude } = res
-      if (!name) {
+      if (!name) {        
         errMsg.value = '点击地图，在下方列表选择地址'
         return
-      } else {
-        errMsg.value = ''
       }
       model.value = { name, address, latitude, longitude }
       emit('change', model.value)
@@ -59,6 +57,7 @@ const handleClick = () => {
   display: flex;
   align-items: center;
   font-size: $uni-font-size-base;
+  padding-left: 10px;
   line-height: 1.4;
   min-height: 36px;
 }

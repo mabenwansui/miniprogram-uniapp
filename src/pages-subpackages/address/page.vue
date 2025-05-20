@@ -3,46 +3,144 @@
     <view class="header">
       <view class="title">当前位置</view>
       <view class="aside">
-        <view class="btn">重新定位</view>
+        <view class="btn">
+          <comp-icons type="map-pin-ellipse" color="primary" :size="20" class="icon" />
+          重新定位
+        </view>
       </view>
     </view>
     <view class="list">
-      <comp-card>
+      <comp-card @click="handleAdd">
         <view class="add">
           <comp-icons type="plusempty" color="primary" class="icon-add" />
           新增收货地址
         </view>
       </comp-card>
-      <!-- <comp-card>
-        <view class="title">{{ title }}</view>
-        <view class="address">{{ addr2ess }}</view>
-        <view class="info"> {{ receiverInfo }} </view>
-        <view class="aside">
-          <view class="link" @click="handleEdit">编辑</view>
+      <comp-card v-for="item in list" :key="item.id">
+        <view class="item-header">
+          <view class="tag">{{ item.title }}</view>
+          <view class="title">{{ item.address.name }}</view>
         </view>
-      </comp-card> -->
+        <view class="address">{{ item.address.address }} - {{ item.details }}</view>
+        <view class="else">
+          {{ item.contactName }}
+          {{ formatSex(item.sex) }}
+          <text class="phone">{{ item.phoneNumber }}</text>
+        </view>
+        <view class="aside">
+          <view class="link" @click="()=> handleUpdate(item.id!)">编辑</view>
+        </view>
+      </comp-card>
     </view>
   </view>
 </template>
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { create, getList, update } from './_api'
 import { SexType } from '@/common/types/user'
-// const receiverInfo = computed(() => `${props.name}${props.sex} ${props.phoneNumber}`)
+import type { Address } from '@/common/types/address'
+
+const openFormPageUrl = 'form/page'
+
+const list = ref<Address[]>([])
+
+const getListFn = async () => {
+  const { flag, data } = await getList()
+  if (flag === 1) {
+    list.value = data.list
+  }
+}
+
+onMounted(() => getListFn())
+const formatSex = (code: SexType) => (code === SexType.male ? '先生' : '女士')
+const handleUpdate = (id: string) => {
+  uni.navigateTo({
+    url: `${openFormPageUrl}?id=${id}`,
+    events: {
+      updateAddress: async (formData: Address) => {
+        const { flag } = await update(formData)
+        if (flag === 1) {
+          getListFn()
+        }
+      }
+    }
+  })
+}
+const handleAdd = () => {
+  uni.navigateTo({
+    url: openFormPageUrl,
+    events: {
+      createAddress: async (formData: Address) => {
+        const { flag } = await create(formData)
+        if (flag === 1) {
+          getListFn()
+        }
+      }
+    }
+  })
+}
 </script>
 <style scoped lang="scss">
 .header {
   background: $uni-bg-color-container;
   display: flex;
   justify-content: space-between;
-  padding: 28rpx 24rpx;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  .btn {
+    border: 1px solid $uni-border-light-color;
+    border-radius: $uni-border-radius-round;
+    display: flex;
+    align-items: center;
+    padding: 8rpx 22rpx;
+    .icon {
+      margin-right: 8rpx;
+    }
+  }
 }
-.icon-add {
-  margin-right: 8rpx;
-  position: relative;
-  top: 2rpx;
-}
-.aside {
-  position: absolute;
-  top: 12rpx;
-  right: 12rpx;
+.list {
+  .add {
+    font-size: $uni-font-size-lg;
+    display: flex;
+    align-items: center;
+    .icon-add {
+      margin-right: 8rpx;
+      position: relative;
+    }
+  }
+  .item-header {
+    display: flex;
+    margin-bottom: 14rpx;
+    .tag {
+      background-color: $uni-color-primary;
+      color: $uni-text-color-inverse;
+      border-radius: $uni-border-radius-base;
+      line-height: 1.6;
+      text-align: center;
+      min-width: 32rpx;
+      padding: 0 4rpx 0;
+      margin-right: 12rpx;
+    }
+    .title {
+      font-size: $uni-font-size-lg;
+    }
+  }
+  .phone {
+    margin-left: 32rpx;
+  }
+  .address {
+    margin-bottom: 8rpx;
+  }
+  .else {
+    color: $uni-text-color-secondary;
+  }
+  .aside {
+    position: absolute;
+    top: 26rpx;
+    right: 28rpx;
+    .link {
+      padding: 4rpx 12rpx;
+    }
+  }
 }
 </style>

@@ -10,7 +10,6 @@
 </template>
 
 <script setup lang="ts">
-// 这里可以导入所需的依赖
 import { ref, onMounted } from 'vue'
 import { getStoreList } from '../../_api/store'
 import type { Store } from '../../_api/store'

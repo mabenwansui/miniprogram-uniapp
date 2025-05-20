@@ -25,7 +25,8 @@ const color = computed(() => {
 })
 
 const size = computed(() => {
-  switch (props.size) {
+  const _size = props.size || 'base'
+  switch (_size) {
     case 'base':
       return 24
     case 'small':
@@ -33,7 +34,7 @@ const size = computed(() => {
     case 'large':
       return 32
     default:
-      return props.size
+      return _size
   }
 })
 </script>

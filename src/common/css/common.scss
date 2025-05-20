@@ -7,6 +7,10 @@ button[type="primary"] {
   background-color: $uni-color-primary;
 }
 
+.link {
+  color: $uni-color-primary;
+}
+
 .uni-easyinput__content-input::placeholder {
   font-size: 26px;
 }

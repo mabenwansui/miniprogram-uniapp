@@ -7,7 +7,6 @@
       }
     },
     {
-      "url": "pages/commodity/page",
       "path": "pages/commodity/page",
       "style": {
         "navigationBarTitleText": "商品"
@@ -22,24 +21,32 @@
     {
       "path": "pages/order/page",
       "style": {
-        "navigationBarTitleText": "订单"
+        "navigationBarTitleText": "订单",
+      }
+    },
+    {
+      "path": "pages/user/page",
+      "style": {
+        "navigationBarTitleText": "我的",
       }
     }
   ],
-  "subPackages  ": [
+  "subPackages": [
     {
-      "root": "address",
+      "root": "pages-subpackages/address",
       "pages": [
         {
-          "path": "pages-subpackages/address/page",
+          "path": "page",
           "style": {
-            "navigationBarTitleText": "收货地址管理"
+            "navigationBarTitleText": "收货地址管理",
+            "navigationBarBackgroundColor": "#ffffff",
+            "navigationBarShadow": false
           }
         },
         {
-          "path": "pages-subpackages/address/form/page",
+          "path": "form/page",
           "style": {
-            "navigationBarTitleText": "地址编辑"
+            "navigationBarTitleText": "地址编辑",
           }
         }
       ]
@@ -52,11 +59,27 @@
     "list": [
       {
         "pagePath": "pages/index/page",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "static/home.png",
+        "selectedIconPath": "static/home-active.png"        
       },
       {
         "pagePath": "pages/commodity/page",
-        "text": "商品"
+        "text": "商品",
+        "iconPath": "static/commodity.png",
+        "selectedIconPath": "static/commodity-active.png",        
+      },
+      {
+        "pagePath": "pages/order/page",
+        "text": "订单",
+        "iconPath": "static/order.png",
+        "selectedIconPath": "static/order-active.png",        
+      },      
+      {
+        "pagePath": "pages/user/page",
+        "text": "我的",
+        "iconPath": "static/user.png",
+        "selectedIconPath": "static/user-active.png",        
       }
     ]
   },

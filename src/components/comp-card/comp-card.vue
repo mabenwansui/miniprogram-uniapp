@@ -1,9 +1,12 @@
 <template>
-  <view class="list-card">
+  <view class="list-card" @click="handleClick">
     <slot />
   </view>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const emit = defineEmits<{ (e: 'click', event: Event): void }>()
+const handleClick = (event: Event) => emit('click', event)
+</script>
 <style scoped lang="scss">
 .list-card {
   position: relative;

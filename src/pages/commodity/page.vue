@@ -24,4 +24,8 @@ onLoad((searchParams) => {
 const handleChange = (storeId: string) => navigateToStore(storeId)
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.header {
+
+}
+</style>
