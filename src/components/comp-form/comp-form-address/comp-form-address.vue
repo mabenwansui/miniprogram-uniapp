@@ -14,8 +14,8 @@
 import { computed, ref } from 'vue'
 
 interface Values {
-  name?: string
-  address?: string
+  poiName?: string
+  poiAddress?: string
   latitude?: number
   longitude?: number
 }
@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const model = defineModel<Values>()
-const value = computed(() => model.value?.name || model.value?.address || props.value?.name)
+const value = computed(() => model.value?.poiName || model.value?.poiAddress)
 const errMsg = ref<string | null>(null)
 const emit = defineEmits(['change'])
 
@@ -45,7 +45,7 @@ const handleClick = () => {
         errMsg.value = '点击地图，在下方列表选择地址'
         return
       }
-      model.value = { name, address, latitude, longitude }
+      model.value = { poiName: name, poiAddress: address, latitude, longitude }
       emit('change', model.value)
     },
     fail: function (res) {}

@@ -36,15 +36,18 @@
   </view>
 </template>
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { onLoad } from '@dcloudio/uni-app'
+import { ref, onMounted, watchEffect } from 'vue'
 import type { Commodity } from '@/common/types/commodity'
 import type { OrderCommodity } from '@/common/types/order'
+import useSearchParams from '@/common/hooks/useSearchParams'
 import { getCommodityCategory, getCommodityListByCategory } from '../_api/commodity'
 import { updateCart, deleteCart, getCartList } from '../_api/cart'
 import { createOrder } from '../_api/order'
+import { getCategory } from '../_api/store'
+
 import CommodityItem from '../_ui/commodity-item/commodity-item.vue'
 import ShoppingCart from '../_ui/shopping-cart/shopping-cart.vue'
+
 interface DataList extends Record<string, any> {
   id: string
   node: string
@@ -54,15 +57,10 @@ const dataList = ref<DataList[]>([])
 const curPage = ref(1)
 const cart = ref<Commodity[]>([])
 const commodityQuantityRecord = ref<Record<string, number>>({})
-let storeId: string
+const { searchParams, isLoading } = useSearchParams()
 
-onLoad((searchParams) => {
-  if (searchParams?.store) {
-    storeId = searchParams?.store
-  }
-})
-
-onMounted(async () => {
+watchEffect(async ()=> {
+  if (isLoading.value === true) return
   // 初始加载商品分类数据，而后在handleLoad中根据当前选中的分类加载对应的商品列表
   async function loadNav() {
     const { flag, data } = await getCommodityCategory()
@@ -71,8 +69,13 @@ onMounted(async () => {
         id: item.id,
         node: item.title
       }))
-    }
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
   }
+  await loadNav()
+})
+
+onMounted(async () => {
+  getCategory()
   async function loadCart() {
     const { flag, data } = await getCartList()
     if (flag === 1) {
@@ -82,7 +85,6 @@ onMounted(async () => {
       })
     }
   }
-  await loadNav()
   await loadCart()
 })
 
@@ -117,7 +119,7 @@ const handleClear = () => {
 }
 const handlePay = async () => {
   const { flag, data } = await createOrder({
-    storeId,
+    storeId: searchParams.value?.store,
     commoditys: cart.value.map((item) => ({
       commodityId: item.id,
       quantity: commodityQuantityRecord.value[item.id]

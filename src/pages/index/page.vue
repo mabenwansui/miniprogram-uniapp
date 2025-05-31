@@ -24,10 +24,10 @@ onMounted(() => {
       url: '/pages/commodity/page'
     })
     // uni.navigateTo({
-    //   // url: '/pages-subpackages/address/page'
-    //   // url: '/pages/commodity/list/page?store=67e2c54ae2b84713db7b72ec'
+      // url: '/pages-subpackages/address/page'
+      // url: '/pages/commodity/list/page?store=67e2c54ae2b84713db7b72ec'
     // })
-  }, 500)
+  }, 0)
 })
 </script>
 

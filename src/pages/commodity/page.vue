@@ -1,31 +1,27 @@
 <template>
-  <view class="commodity-wrap page">
-    <select-store v-if="showStore" :onChange="handleChange" />
-  </view>
+  <view class="commodity-wrap page"></view>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { onLoad } from '@dcloudio/uni-app'
-import SelectStore from './_ui/select-store/select-store.vue'
+import { watchEffect } from 'vue'
+import useGetLocation from '@/common/hooks/useGetLocation'
+import useSearchParams from '@/common/hooks/useSearchParams'
+import { getNearStore } from './_api/store'
 
-const showStore = ref(false)
-
+const location = useGetLocation()
+const params = useSearchParams()
 const navigateToStore = (storeId: string) => uni.navigateTo({ url: `/pages/commodity/list/page?store=${storeId}` })
 
-onLoad((searchParams) => {
-  if (searchParams?.store) {
-    navigateToStore(searchParams?.store)
-  } else {
-    showStore.value = true
+watchEffect(async () => {
+  if (params.isLoading.value === false && params.searchParams.value?.store) {
+    navigateToStore(params.searchParams.value.store)
+  } else if (location.value?.latitude) {
+    const { flag, data } = await getNearStore({ lon: location.value.longitude!, lat: location.value.latitude }) 
+    if (flag === 1) {
+      navigateToStore(data.id)
+    }
   }
 })
-
-const handleChange = (storeId: string) => navigateToStore(storeId)
 </script>
 
-<style scoped lang="scss">
-.header {
-
-}
-</style>
+<style scoped lang="scss"></style>

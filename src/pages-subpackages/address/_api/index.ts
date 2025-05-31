@@ -2,13 +2,13 @@ import { post } from '@/common/js/request'
 import type { OrderCommodity } from '@/common/types/order'
 import type { Address } from '@/common/types/address'
 
-type CreateDto = Address
-export async function create(dto: CreateDto) {
+const getInfoUrl = '/api/address/get-info'
+
+export async function create(dto: Omit<Address, 'id'>) {
   return await post<Record<never, never>>('/api/address/create', dto)
 }
 
-type UpdateDto = Address
-export async function update(dto: UpdateDto) {
+export async function update(dto: Address) {
   return await post<{ id: string; list: OrderCommodity[] }>('/api/address/update', dto)
 }
 
@@ -23,3 +23,20 @@ export async function getList() {
 export async function getInfo(id: string) {
   return await post<Address>('/api/address/get-info', { id })
 }
+
+// export async function getInfo4Form(id: string) {
+//   const { flag, data } = await post<Address>(getInfoUrl, { id })
+//   const { poiName, poiAddress, location, ...rest } = data
+//   return {
+//     flag,
+//     data: {
+//       ...rest,
+//       address: {
+//         poiName,
+//         poiAddress,
+//         longitude: location?.coordinates[0],
+//         latitude: location?.coordinates[1]
+//       }
+//     }
+//   }
+// }

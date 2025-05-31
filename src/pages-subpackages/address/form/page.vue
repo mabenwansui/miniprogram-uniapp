@@ -1,5 +1,5 @@
 <template>
-  <view class="address-page page" v-if="!isLoading">
+  <view class="address-page page">
     <comp-card>
       <view class="forms">
         <uni-forms :label-width="54" ref="formRef" :border="true" :model="formData" :rules="rules">
@@ -14,7 +14,7 @@
             />
             <uni-data-checkbox class="sex" mode="tag" v-model="formData.sex" :localdata="sexOption" />
           </uni-forms-item>
-          <uni-forms-item label="标签">
+          <uni-forms-item label="标签2">
             <uni-data-checkbox mode="tag" v-model="formData.title" :localdata="tagOption" />
           </uni-forms-item>
           <uni-forms-item label="手机号" name="phoneNumber">
@@ -47,27 +47,21 @@
   </view>
 </template>
 <script setup lang="ts">
-import { ref, getCurrentInstance } from 'vue'
-import { onLoad } from '@dcloudio/uni-app'
+import { ref, onMounted, onUnmounted, getCurrentInstance } from 'vue'
 import { SexType } from '@/common/types/user'
-import useLoading from '@/common/hooks/useLoading'
-import type { Address } from '@/common/types/address'
-import { getInfo } from '../_api'
+import type { Address, AddressLocation } from '@/common/types/address'
 
-const { isLoading, showLoading, hideLoading } = useLoading()
-
-onLoad(async (params) => {
-  if (params && params.id) {
-    showLoading()
-    const { flag, data } = await getInfo(params.id)
-    hideLoading()
-    if (flag === 1) {
-      formData.value = data
-    }
+export interface FormData extends Omit<Address, keyof AddressLocation> {
+  address: {
+    poiName: string
+    poiAddress: string
+    longitude?: number
+    latitude?: number
   }
-})
+}
 
-const instance = getCurrentInstance()
+const instance = getCurrentInstance()?.proxy
+
 const formRef = ref<any>(null)
 const sexOption = [
   { value: SexType.male, text: '先生' },
@@ -79,20 +73,19 @@ const tagOption = [
   { value: '学校', text: '学校' },
   { value: '父母家', text: '父母家' }
 ]
-const formData = ref<Address>({
+const formData = ref<FormData>({
   id: '',
   contactName: '',
   title: '家',
   sex: SexType.male,
   phoneNumber: '',
-  address: {
-    name: '',
-    address: ''
-  },
+  isDefault: false,
   details: '',
-  isDefault: false
+  address: {
+    poiName: '',
+    poiAddress: ''
+  }
 })
-
 const rules = ref({
   contactName: {
     rules: [{ required: true, errorMessage: '请输入联系人姓名' }]
@@ -104,7 +97,7 @@ const rules = ref({
     rules: [
       {
         validateFunction: (rule: any, value: any, data: any, callback: any) => {
-          if (!value.name) {
+          if (!value.poiName) {
             callback('请选择收货地址')
           }
           return true
@@ -117,15 +110,28 @@ const rules = ref({
   }
 })
 
+onMounted(() => {
+  const eventChannel = (instance as any).getOpenerEventChannel()
+  eventChannel.on('initAddress', (data: FormData) => {
+    formData.value = data
+  })
+})
+
+onUnmounted(() => {
+  const eventChannel = (instance as any).getOpenerEventChannel()
+  eventChannel.off('initAddress')
+})
+
 const handleSubmit = async () => {
   await formRef.value?.validate()
-  const _instance: any = instance?.proxy
-  const eventChannel = _instance.getOpenerEventChannel()
+  const eventChannel = (instance as any).getOpenerEventChannel()
+
   if (formData.value?.id) {
-    eventChannel.emit('updateAddress', formData.value)
+    eventChannel.emit('updateAddress', { ...formData.value })
   } else {
-    eventChannel.emit('createAddress', formData.value)
-  }  
+    eventChannel.emit('createAddress', { ...formData.value })
+  }
+
   uni.navigateBack()
 }
 </script>
