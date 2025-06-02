@@ -13,7 +13,7 @@ const params = useSearchParams()
 const navigateToStore = (storeId: string) => uni.navigateTo({ url: `/pages/commodity/list/page?store=${storeId}` })
 
 watchEffect(async () => {
-  if (params.isLoading.value === false && params.searchParams.value?.store) {
+  if (params.ready.value === true && params.searchParams.value?.store) {
     navigateToStore(params.searchParams.value.store)
   } else if (location.value?.latitude) {
     const { flag, data } = await getNearStore({ lon: location.value.longitude!, lat: location.value.latitude }) 

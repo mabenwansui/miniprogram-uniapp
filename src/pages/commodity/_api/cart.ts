@@ -1,8 +1,8 @@
 import { post } from '@/common/js/request'
-import type { OrderCommodity } from '@/common/types/order'
+import type { Cart } from '@/common/types/cart'
 
 interface UpdateCart {
-  commodityId: string
+  branchId: string
   quantity: number
 }
 export async function updateCart(params: UpdateCart) {
@@ -10,7 +10,7 @@ export async function updateCart(params: UpdateCart) {
 }
 
 export async function getCartList() {
-  return await post<{ id: string; list: OrderCommodity[] }>('/api/cart/list')
+  return await post<{ id: string; list: Cart[] }>('/api/cart/list')
 }
 
 export async function deleteCart() {

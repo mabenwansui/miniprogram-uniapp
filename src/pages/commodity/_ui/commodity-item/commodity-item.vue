@@ -1,11 +1,11 @@
 <template>
   <view class="product-section-item">
     <view class="img" :style="`width: ${props.imgSize}`">
-      <comp-commodity-image lazy-load :img-url="props.data?.coverImageUrl" />
+      <comp-commodity-image lazy-load :img-url="props.data?.commodity.coverImageUrl" />
     </view>
     <view class="content">
-      <view class="title">{{ props.data.name }}</view>
-      <view class="description">{{ props.data.description }}</view>
+      <view class="title">{{ props.data.commodity.name }}</view>
+      <view class="description">{{ props.data.commodity.description }}</view>
       <view class="price">¥ {{ props.data.price }}</view>
       <view class="action">
         <comp-add-cart
@@ -20,13 +20,13 @@
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Commodity } from '@/common/types/commodity'
+import type { Branch } from '@/common/types/branch'
 interface Props {
-  data: Commodity
+  data: Branch
   quantity: number
   /** 要带单位, 如200rpx */
   imgSize?: string
-  onQuantityChange?: (item: Commodity, quantity: number) => void
+  onQuantityChange?: (item: Branch, quantity: number) => void
 }
 const props = defineProps<Props>()
 const quantity = computed(() => props.quantity || 0)

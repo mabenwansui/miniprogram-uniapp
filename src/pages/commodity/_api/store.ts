@@ -1,6 +1,5 @@
 import { post } from '@/common/js/request'
 import type { Store } from '@/common/types/store'
-import type { Category } from '@/common/types/category'
 
 export type { Store }
 
@@ -14,8 +13,4 @@ interface GetNearStoreParams {
 }
 export async function getNearStore(params: GetNearStoreParams) {
   return await post<Store>('/api/store/get-near', params)
-}
-
-export async function getCategory() {
-  return await post<Category>('/api/branch/category-list')
 }

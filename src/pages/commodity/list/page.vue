@@ -37,13 +37,12 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted, watchEffect } from 'vue'
-import type { Commodity } from '@/common/types/commodity'
-import type { OrderCommodity } from '@/common/types/order'
+import type { Branch } from '@/common/types/branch'
+import type { Cart } from '@/common/types/cart'
 import useSearchParams from '@/common/hooks/useSearchParams'
-import { getCommodityCategory, getCommodityListByCategory } from '../_api/commodity'
+import { getCategory, getCommodityListByCategory } from '../_api/commodity'
 import { updateCart, deleteCart, getCartList } from '../_api/cart'
 import { createOrder } from '../_api/order'
-import { getCategory } from '../_api/store'
 
 import CommodityItem from '../_ui/commodity-item/commodity-item.vue'
 import ShoppingCart from '../_ui/shopping-cart/shopping-cart.vue'
@@ -51,19 +50,19 @@ import ShoppingCart from '../_ui/shopping-cart/shopping-cart.vue'
 interface DataList extends Record<string, any> {
   id: string
   node: string
-  children?: Commodity[]
+  children?: Branch[]
 }
 const dataList = ref<DataList[]>([])
 const curPage = ref(1)
-const cart = ref<Commodity[]>([])
+const cart = ref<Branch[]>([])
 const commodityQuantityRecord = ref<Record<string, number>>({})
-const { searchParams, isLoading } = useSearchParams()
+const { searchParams, ready } = useSearchParams()
 
 watchEffect(async ()=> {
-  if (isLoading.value === true) return
+  if (ready.value === false) return
   // 初始加载商品分类数据，而后在handleLoad中根据当前选中的分类加载对应的商品列表
   async function loadNav() {
-    const { flag, data } = await getCommodityCategory()
+    const { flag, data } = await getCategory()
     if (flag === 1) {
       dataList.value = data.list.map((item) => ({
         id: item.id,
@@ -75,13 +74,12 @@ watchEffect(async ()=> {
 })
 
 onMounted(async () => {
-  getCategory()
   async function loadCart() {
     const { flag, data } = await getCartList()
     if (flag === 1) {
-      data?.list?.forEach((item: OrderCommodity) => {
-        cart.value.push(item.commodity)
-        commodityQuantityRecord.value[item.commodity.id] = item.quantity
+      data?.list?.forEach((item: Cart) => {
+        cart.value.push(item.branch)
+        commodityQuantityRecord.value[item.branch.id] = item.quantity
       })
     }
   }
@@ -91,7 +89,7 @@ onMounted(async () => {
 const handleLoad = async (categoryId: string, index: number) => {
   // 加载当前选中分类对应的商品列表
   const { flag, data } = await getCommodityListByCategory({
-    category: categoryId,
+    categoryId,
     curPage: 1
   })
   if (flag === 1) {
@@ -100,7 +98,7 @@ const handleLoad = async (categoryId: string, index: number) => {
   }
 }
 
-const handleQuantityChange = async (item: Commodity, quantity: number) => {
+const handleQuantityChange = async (item: Branch, quantity: number) => {
   commodityQuantityRecord.value[item.id] = quantity
   const index = cart.value.findIndex((_item) => _item.id === item.id)
   if (index > -1) {
@@ -110,7 +108,7 @@ const handleQuantityChange = async (item: Commodity, quantity: number) => {
   } else {
     cart.value.push(item)
   }
-  updateCart({ commodityId: item.id, quantity: quantity })
+  updateCart({ branchId: item.id, quantity: quantity })
 }
 const handleClear = () => {
   commodityQuantityRecord.value = {}
@@ -121,13 +119,13 @@ const handlePay = async () => {
   const { flag, data } = await createOrder({
     storeId: searchParams.value?.store,
     commoditys: cart.value.map((item) => ({
-      commodityId: item.id,
+      branchId: item.id,
       quantity: commodityQuantityRecord.value[item.id]
     }))
   })
   if (flag === 1) {
     uni.navigateTo({
-      url: `/pages/order/page?order=${data.id}`
+      url: `/pages/order/details/page?order=${data.id}`
     })
   }
 }

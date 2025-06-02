@@ -1,9 +1,4 @@
-import type { Commodity } from './commodity'
-
-export interface OrderCommodity {
-  commodity: Pick<Commodity, 'id' | 'name' | 'originalPrice' | 'category' | 'price' | 'coverImageUrl'>
-  quantity: number
-}
+import type { Cart } from '@/common/types/cart'
 
 export enum ORDER_TYPE {
   /** 堂食 */
@@ -58,5 +53,5 @@ export interface OrderInfo {
   paymentStatus?: PAYMENT_STATUS // 支付状态
   table_number?: string // 桌号
   remark?: string
-  commoditys: OrderCommodity[]
+  commoditys: Cart[]
 }

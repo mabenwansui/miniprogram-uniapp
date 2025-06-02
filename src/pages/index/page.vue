@@ -20,9 +20,12 @@ const handleClick = () => {
 }
 onMounted(() => {
   setTimeout(() => {
-    uni.switchTab({
-      url: '/pages/commodity/page'
+    uni.navigateTo({
+      url: '/pages/order/details/page?order=683c827e8e77cc39f330eec7'
     })
+    // uni.switchTab({
+    //   url: '/pages/commodity/page'
+    // })
     // uni.navigateTo({
       // url: '/pages-subpackages/address/page'
       // url: '/pages/commodity/list/page?store=67e2c54ae2b84713db7b72ec'

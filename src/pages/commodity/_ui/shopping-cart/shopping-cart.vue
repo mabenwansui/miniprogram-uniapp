@@ -15,10 +15,10 @@
           <view class="card-list">
             <view v-for="item in props.list" :key="item.id" class="card-item">
               <view class="img">
-                <comp-commodity-image :imgUrl="item.coverImageUrl" size="small" />
+                <comp-commodity-image :imgUrl="item.commodity.coverImageUrl" size="small" />
               </view>
               <view class="content">
-                <view class="title">{{ item.name }}</view>
+                <view class="title">{{ item.commodity.name }}</view>
                 <view class="price">¥ {{ item.price }}</view>
                 <view class="actions">
                   <comp-add-cart
@@ -48,7 +48,7 @@
 </template>
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue'
-import type { Commodity } from '@/common/types/commodity'
+import type { Branch } from '@/common/types/branch'
 import theme from '@/common/theme'
 import iconShoppingCart from './images/icon-shoppingcart.svg'
 
@@ -56,10 +56,10 @@ defineOptions({ inheritAttrs: false })
 
 const props = defineProps<{
   quantityRecord: Record<string, number>
-  list: Commodity[]
+  list: Branch[]
   onPay?: () => void
   onClear?: () => void
-  onQuantityChange?: (item: Commodity, quantity: number) => void
+  onQuantityChange?: (item: Branch, quantity: number) => void
 }>()
 const totalAmount = computed(() => props.list?.reduce((total, item) => total + item.price * props.quantityRecord[item.id], 0))
 const badge = computed(() => props.list?.reduce((total, item) => total + props.quantityRecord[item.id], 0))
@@ -78,7 +78,7 @@ const handleTriggerList = () => {
   listShow.value = !listShow.value
 }
 const handleClear = () => props?.onClear?.()
-const handleChange = (item: Commodity, quantity: number) => {
+const handleChange = (item: Branch, quantity: number) => {
   props?.onQuantityChange?.(item, quantity)
 }
 const handlePay = () => props?.onPay?.()

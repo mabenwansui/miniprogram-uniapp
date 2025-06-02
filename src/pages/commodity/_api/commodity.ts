@@ -1,24 +1,17 @@
 import { post } from '@/common/js/request'
-import type { Commodity } from '@/common/types/commodity'
+import type { Branch } from '@/common/types/branch'
 import type { Page } from '@/common/types/page'
+import type { Category } from '@/common/types/category'
 
-interface CategoryResponseList {
-  id: string
-  title: string
-  parentId?: string
-  level: number
-  children: CategoryResponseList[]
-}
-export async function getCommodityCategory() {
-  return await post<{ list: CategoryResponseList[] }>('/api/commodity/category/list')
+export async function getCategory() {
+  return await post<{ list: Category[] }>('/api/branch/category-list')
 }
 
 interface GetCommodityListByCategory {
-  category: string
+  categoryId: string
   curPage: number
   pageSize?: number
 }
-export async function getCommodityListByCategory({ category, curPage = 1, pageSize = 10 }: GetCommodityListByCategory) {
-  return await post<{ list: Commodity[] } & Page>('/api/commodity/search', { category, curPage, pageSize })
+export async function getCommodityListByCategory({ categoryId, curPage = 1, pageSize = 10 }: GetCommodityListByCategory) {
+  return await post<{ list: Branch[] } & Page>('/api/branch/search-commodity', { categoryId, curPage, pageSize })
 }
-
