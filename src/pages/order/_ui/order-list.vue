@@ -1,9 +1,8 @@
 <template>
-  <view class="commodity-list">
-    <comp-card>
-      <view class="cart-title">待下单</view>
-      <view class="list">
-        <view v-for="item in props.commoditys" :key="item.branch.id" class="list-item">
+  <view class="commodity-list" v-if="props.order">
+    <comp-card title="待下单">
+      <view class="order-list">
+        <view v-for="item in props.order.commoditys" :key="item.branch.id" class="list-item">
           <view class="img">
             <comp-commodity-image size="small" :imgUrl="item.branch.commodity.coverImageUrl" />
           </view>
@@ -11,16 +10,32 @@
             <view class="title">
               {{ item.branch.commodity.name }}
             </view>
-            <view class="footer"> × {{ item.quantity }} 份 </view>
+            <view class="secondary"> × {{ item.quantity }} 份 </view>
           </view>
           <view class="aside">
             <view class="price">
-              {{ '¥' + item.branch.commodity.originalPrice }}
+              <comp-price>{{ item.branch.originalPrice }}</comp-price>
             </view>
             <view class="price-important">
-              {{ '¥' + item.branch.price }}
+              <text class="help">优惠后</text>
+              <comp-price>{{ item.branch.price }} </comp-price>
             </view>
           </view>
+        </view>
+      </view>
+      <view class="simple-wrap">
+        <view class="list-item">
+          <view class="title">打包费用</view>
+          <view class="aside">
+            <comp-price>10</comp-price>
+          </view>
+        </view>
+      </view>
+      <view class="footer">
+        <view></view>
+        <view>
+          总计
+          <comp-price class="amount">{{ props.order.actualAmount }}</comp-price>
         </view>
       </view>
     </comp-card>
@@ -28,35 +43,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
 import type { OrderInfo } from '@/common/types/order'
-const props = defineProps<{ commoditys: OrderInfo['commoditys'] }>()
+const props = defineProps<{ order?: OrderInfo }>()
 </script>
 
 <style scoped lang="scss">
 .commodity-list {
-  .cart-title {
-    display: flex;
-    &::before {
-      content: '';
-      display: inline-block;
-      width: 4px;
-      height: 14px;
-      margin-right: 8rpx;
-      border-radius: $uni-border-radius-sm;
-      background-color: $uni-color-primary;
-    }
-    align-items: center;
-    font-weight: bold;
-  }
-  .list {
+  .order-list {
     margin-top: 32rpx;
     .list-item {
       display: flex;
       margin-bottom: 28rpx;
-      &:last-child {
-        margin-bottom: 0;
-      }
+      position: relative;
       .img {
         margin-right: 20rpx;
       }
@@ -67,11 +65,47 @@ const props = defineProps<{ commoditys: OrderInfo['commoditys'] }>()
         .title {
           width: 100%;
         }
-        .footer {
+        .secondary {
           color: $uni-text-color-secondary;
           padding-bottom: 10rpx;
         }
       }
+      .aside {
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: right;
+        .price-important {
+          color: $uni-color-error;
+          font-weight: bold;
+          font-size: 32rpx;
+          padding-top: 4rpx;
+          .help {
+            font-weight: normal;
+            font-size: 24rpx;
+            margin-right: 8rpx;
+          }
+        }
+      }
+    }
+  }
+  .simple-wrap {
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 28rpx;
+    }
+  }
+  .footer {
+    display: flex;
+    padding: 20rpx 0 8rpx;
+    justify-content: space-between;
+    border-top: 1px solid $uni-border-light-color;
+    .amount {
+      margin-left: 8rpx;
+      color: $uni-color-error;
+      font-weight: bold;
+      font-size: 32rpx;
     }
   }
 }

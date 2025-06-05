@@ -6,7 +6,9 @@
     <view class="content">
       <view class="title">{{ props.data.commodity.name }}</view>
       <view class="description">{{ props.data.commodity.description }}</view>
-      <view class="price">¥ {{ props.data.price }}</view>
+      <view class="price">
+        <comp-price>{{ props.data.price }}</comp-price>
+      </view>
       <view class="action">
         <comp-add-cart
           :quantity="quantity"

@@ -51,6 +51,8 @@ export interface OrderInfo {
   orderStatus?: ORDER_STATUS // 订单状态
   paymentType: PAYMENT_TYPE // 支付类型
   paymentStatus?: PAYMENT_STATUS // 支付状态
+  originalAmount: number // 原价
+  actualAmount: number // 实际支付金额
   table_number?: string // 桌号
   remark?: string
   commoditys: Cart[]
