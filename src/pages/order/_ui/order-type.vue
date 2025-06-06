@@ -9,7 +9,7 @@
         @click="() => handleClick(item.id)"
       >
         <comp-icons class="icon" :type="item.icon" :color="item.id === model ? 'primary' : 'default'" size="large" />
-        <text>{{ item.title }}</text>
+        <text class="title">{{ item.title }}</text>
         <view v-if="item.id === model" class="decoration">
           <view class="bg"></view>
           <view class="icon"><comp-icons type="checkmarkempty" size="small" color="inverse" /></view>
@@ -81,7 +81,7 @@ const handleClick = (id: ORDER_TYPE) => {
     &.active {
       border-color: $uni-color-primary;
       color: $uni-color-primary;
-      text {
+      .title {
         font-weight: bold;
       }
     }

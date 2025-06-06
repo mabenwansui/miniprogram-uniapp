@@ -52,7 +52,6 @@
           "style": {
             "navigationBarTitleText": "收货地址管理",
             "navigationBarBackgroundColor": "#ffffff",
-            "navigationBarShadow": false
           }
         },
         {
