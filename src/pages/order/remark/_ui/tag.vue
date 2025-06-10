@@ -41,7 +41,7 @@ const emit = defineEmits<{
 
 const isEdit = ref(false)
 const showEditBtn = computed(() => {
-  return props.list.filter((item) => item.isSystem === false).length > 0
+  return isEdit.value === true || props.list.filter((item) => item.isSystem === false).length > 0 ? true : false
 })
 const handleClick = (item: any) => {
   if (isEdit.value === true) return

@@ -14,6 +14,9 @@ export default function useTagList () {
   })
   return {
     list,
-    isLoading
+    isLoading,
+    mutate: (data: Response['list']) => {
+      list.value = data
+    }
   }
 }

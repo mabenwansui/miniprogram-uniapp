@@ -21,25 +21,25 @@
     {
       "path": "pages/order/page",
       "style": {
-        "navigationBarTitleText": "订单",
+        "navigationBarTitleText": "订单"
       }
     },
     {
       "path": "pages/order/details/page",
       "style": {
-        "navigationBarTitleText": "订单详情",
+        "navigationBarTitleText": "订单详情"
       }
     },
     {
       "path": "pages/order/remark/page",
       "style": {
-        "navigationBarTitleText": "备注",
+        "navigationBarTitleText": "备注"
       }
-    },    
+    },
     {
       "path": "pages/user/page",
       "style": {
-        "navigationBarTitleText": "我的",
+        "navigationBarTitleText": "我的"
       }
     }
   ],
@@ -51,13 +51,13 @@
           "path": "page",
           "style": {
             "navigationBarTitleText": "收货地址管理",
-            "navigationBarBackgroundColor": "#ffffff",
+            "navigationBarBackgroundColor": "#ffffff"
           }
         },
         {
           "path": "form/page",
           "style": {
-            "navigationBarTitleText": "地址编辑",
+            "navigationBarTitleText": "地址编辑"
           }
         }
       ]
@@ -71,26 +71,26 @@
       {
         "pagePath": "pages/index/page",
         "text": "首页",
-        "iconPath": "static/home.png",
-        "selectedIconPath": "static/home-active.png"        
+        "iconPath": "static/tab-bar/home.png",
+        "selectedIconPath": "static/tab-bar/home-active.png"
       },
       {
         "pagePath": "pages/commodity/page",
         "text": "商品",
-        "iconPath": "static/commodity.png",
-        "selectedIconPath": "static/commodity-active.png",        
+        "iconPath": "static/tab-bar/commodity.png",
+        "selectedIconPath": "static/tab-bar/commodity-active.png"
       },
       {
         "pagePath": "pages/order/page",
         "text": "订单",
-        "iconPath": "static/order.png",
-        "selectedIconPath": "static/order-active.png",        
-      },      
+        "iconPath": "static/tab-bar/order.png",
+        "selectedIconPath": "static/tab-bar/order-active.png"
+      },
       {
         "pagePath": "pages/user/page",
         "text": "我的",
-        "iconPath": "static/user.png",
-        "selectedIconPath": "static/user-active.png",        
+        "iconPath": "static/tab-bar/user.png",
+        "selectedIconPath": "static/tab-bar/user-active.png"
       }
     ]
   },

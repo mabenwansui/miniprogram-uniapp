@@ -1,52 +1,59 @@
 import type { Cart } from '@/common/types/cart'
+import type { Store } from '@/common/types/store'
 
-export enum ORDER_TYPE {
+export const ORDER_TYPE ={
   /** 堂食 */
-  DINE_IN = 'dine-in',
+  DINE_IN: 'dine-in',
   /** 外卖 */
-  TAKE_OUT = 'takeout',
+  TAKE_OUT: 'takeout',
   /** 配送 */
-  DELIVERY = 'delivery'
-}
+  DELIVERY: 'delivery'
+} as const
+export type ORDER_TYPE = ValueOf<typeof ORDER_TYPE>
 
-export enum ORDER_STATUS {
+export const ORDER_STATUS = {
   /** 待支付 */
-  PENDING = 'pending',
+  PENDING: 'pending',
   /** 处理中 */
-  PROCESSING = 'processing',
+  PROCESSING: 'processing',
   /** 待取餐 */
-  READY = 'ready',
+  READY: 'ready',
   /** 已取消 */
-  CANCELLED = 'cancelled',
+  CANCELLED: 'cancelled',
   /** 申请退款 */
-  REFUND_REQUESTED = 'refund_requested',
+  REFUND_REQUESTED: 'refund_requested',
   /** 退款中 */
-  REFUNDING = 'refunding',
+  REFUNDING: 'refunding',
   /** 退款失败 */
-  REFUND_FAILED = 'refund_failed',
+  REFUND_FAILED: 'refund_failed',
   /** 退款完成 */
-  REFUNDED = 'refunded',
+  REFUNDED: 'refunded',
   /** 已完成 */
-  COMPLETED = 'completed'
-}
+  COMPLETED: 'completed'
+} as const
+export type ORDER_STATUS = ValueOf<typeof ORDER_STATUS>
 
-export enum PAYMENT_TYPE {
+export const PAYMENT_TYPE = {
   /** 微信支付 */
-  WECHAT = 'wechat',
+  WECHAT: 'wechat',
   /** 支付宝支付 */
-  ALIPAY = 'alipay'
-}
+  ALIPAY: 'alipay'
+} as const
+export type PAYMENT_TYPE = ValueOf<typeof PAYMENT_TYPE> // 定义支付类型的类型别名，使用 ValueOf 函数获取枚举类型的所有值，并使用 as const 确保值是常量，这样 TypeScript 就可以正确推断类型了。
 
-export enum PAYMENT_STATUS {
+export const PAYMENT_STATUS = {
   /** 未支付 */
-  UNPAID = 'unpaid',
+  UNPAID: 'unpaid',
   /** 已支付 */
-  PAID = 'paid',
+  PAID: 'paid',
   /** 支付失败 */
-  FAILED = 'failed'
-}
+  FAILED: 'failed'
+} as const
+export type PAYMENT_STATUS = ValueOf<typeof PAYMENT_STATUS>
 
 export interface OrderInfo {
+  id?: string // 订单ID
+  store: Store // 店铺信息
   orderType: ORDER_TYPE // 订单类型
   orderStatus?: ORDER_STATUS // 订单状态
   paymentType: PAYMENT_TYPE // 支付类型

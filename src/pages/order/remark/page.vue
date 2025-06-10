@@ -22,20 +22,48 @@
   </view>
 </template>
 <script setup lang="ts">
-import { ref, getCurrentInstance } from 'vue'
+import { ref, onMounted, onUnmounted, getCurrentInstance } from 'vue'
 import useTagList from './_hooks/useTagList'
-import { delTag } from './_api'
+import { createTag, delTag } from './_api'
 import Tag from './_ui/tag.vue'
 
-const formData = ref({ remark: '' })
+interface FormData {
+  remark: string
+}
+
+const formData = ref<FormData>({ remark: '' })
 const instance = getCurrentInstance()?.proxy
-const { list, isLoading } = useTagList()
+const { list, mutate, isLoading } = useTagList()
+
+const autoSaveRemarkToTag = () => {
+  const remark = formData.value.remark.trim()
+  if (remark.length <= 1 || remark.length > 20) return
+  if (list.value.some((item) => item.name === remark)) return
+  createTag(remark)
+}
+
+onMounted(() => {
+  const eventChannel = (instance as any).getOpenerEventChannel()
+  eventChannel.on('initOrderMark', (data: FormData) => {
+    formData.value = data
+  })
+})
+
+onUnmounted(() => {
+  const eventChannel = (instance as any).getOpenerEventChannel()
+  eventChannel.off('initOrderMark')
+})
+
+const handleSubmit = () => {
+  autoSaveRemarkToTag()
+  const eventChannel = (instance as any).getOpenerEventChannel()
+  eventChannel.emit('updateRemark', { ...formData.value })
+  uni.navigateBack()
+}
 
 const handleTagDel = async (id: string) => {
   const { flag } = await delTag(id)
-  if (flag) {
-    list.value = list.value.filter(item => item.id !== id)
-  }
+  if (flag) mutate(list.value.filter((item) => item.id !== id))
 }
 
 const handleTagChange = (name: string) => {
@@ -44,13 +72,6 @@ const handleTagChange = (name: string) => {
     val = ' ' + name
   }
   formData.value.remark = formData.value.remark + val
-}
-
-const handleSubmit = () => {
-  const eventChannel = (instance as any).getOpenerEventChannel()
-  const emitType = formData.value?.remark ? 'updateAddress' : 'createAddress'
-  eventChannel.emit(emitType, { ...formData.value })
-  uni.navigateBack()
 }
 </script>
 <style scoped lang="scss">

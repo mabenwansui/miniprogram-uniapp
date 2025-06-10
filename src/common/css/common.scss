@@ -12,6 +12,14 @@ page {
 button[type="primary"] {
   background-color: $uni-color-primary;
 }
+.button-hover {
+  background-color: $uni-color-primary!important;
+  opacity: 0.95;
+}
+
+button[type="warn"] {
+  background-color: $uni-color-error;
+}
 
 .link {
   color: $uni-color-primary;

@@ -7,19 +7,20 @@
       </view>
     </view>
     <view class="actions">
-      <button type="primary" class="btn-primary">下单并支付</button>
+      <button @click="emit('submit')" type="primary" hover-class="button-hover" class="btn-primary">下单并支付</button>
     </view>
   </view>
 </template>
 <script setup lang="ts">
 import type { OrderInfo } from '@/common/types/order'
 const props = defineProps<{ order?: OrderInfo }>()
+const emit = defineEmits(['submit'])
 </script>
 <style scoped lang="scss">
 .summary-wrap {
   width: 100vw;
   position: fixed;
-  z-index: 1010;
+  z-index: 50;
   bottom: 0;
   align-items: center;
   display: flex;

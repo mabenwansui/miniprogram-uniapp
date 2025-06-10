@@ -1,6 +1,6 @@
 <template>
   <view class="list-card-item" @click="handleClick">
-    {{ props.title }}
+    <view class="info">{{ props.title }}</view>
     <view class="aside">
       {{ props.asideTitle }}
       <CompIcons size="small" type="right" />
@@ -21,7 +21,10 @@ const props = defineProps<{
   position: relative;
   display: flex;
   justify-content: space-between;
+  .info { flex-shrink: 0; }
   .aside {
+    flex-shrink: 1;
+    margin-left: 32rpx;
     color: $uni-text-color-secondary;
     margin-right: -12rpx;
   }

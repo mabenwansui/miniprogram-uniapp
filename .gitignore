@@ -11,7 +11,7 @@ node_modules
 .DS_Store
 dist
 *.local
-.VSCode*
+.VSCodeCounter/*
 
 # Editor directories and files
 .idea

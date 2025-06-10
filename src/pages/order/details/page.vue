@@ -2,8 +2,9 @@
   <view class="order-details-wrap page">
     <OrderType v-model="orderType" />
     <OrderList :order="order" />
-    <OrderFooter :order="order" />
-    <OrderMark />
+    <OrderMark v-model="remarkModel" />
+    <OrderFooter :order="order" @submit="handlePay" />
+    <comp-pay @submit="handleConfirmPay" :data="{ price: order?.actualAmount! }" v-model:open="payOpen" />
   </view>
 </template>
 
@@ -16,11 +17,13 @@ import OrderList from '../_ui/order-list.vue'
 import OrderType from '../_ui/order-type.vue'
 import OrderFooter from '../_ui/order-footer.vue'
 import OrderMark from '../_ui/order-mark.vue'
-import { getOrder } from '../_api/order'
+import { getOrder, submitOrder } from '../_api/order'
 
 const { searchParams, ready } = useSearchParams<{ order: string }>()
+const payOpen = ref(false)
 const order = ref<OrderInfo>()
 const orderType = ref<ORDER_TYPE>(ORDER_TYPE.DINE_IN)
+const remarkModel = ref({ remark: '' })
 
 watchEffect(async () => {
   if (ready.value === true) {
@@ -34,6 +37,24 @@ watchEffect(async () => {
     }
   }
 })
+
+const handleConfirmPay = async () => {
+  const { flag } = await submitOrder({
+    orderId: order.value?.id!,
+    orderType: orderType.value,
+    paymentType: 'wechat',
+    remark: remarkModel.value.remark
+  })
+  if (flag === 1) {
+    console.log('ok')
+  }
+}
+
+const handlePay = async () => {
+  if (order.value?.actualAmount && order.value?.actualAmount > 0) {
+    payOpen.value = true
+  }
+}
 </script>
 
 <style scoped lang="scss"></style>

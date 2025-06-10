@@ -1,6 +1,11 @@
 <template>
-  <uni-icons v-if="isCustomIcon" custom-prefix="iconfont" :type="props.type" :color="color" :size="size" />
-  <uni-icons v-else :type="props.type" :color="color" :size="size" />
+  <uni-icons
+    @click="() => emit('click')"
+    v-bind="isCustomIcon ? { ['custom-prefix']: 'iconfont' } : {}"
+    :type="props.type"
+    :color="color"
+    :size="size"
+  />
 </template>
 <script setup lang="ts">
 // https://uniapp.dcloud.net.cn/component/uniui/uni-icons.html
@@ -12,8 +17,10 @@ type IconType = 'icon-shopping' | 'icon-meal'
 const props = defineProps<{
   size?: 'base' | 'small' | 'large' | number
   type: IconType | string
-  color?: 'primary' | 'default' | 'success' | 'reverse' | 'error' | string
+  color?: 'primary' | 'default' | 'success' | 'inverse' | 'error' | string
 }>()
+
+const emit = defineEmits<{ click: [] }>()
 
 const isCustomIcon = computed(() => {
   return props.type.startsWith('icon-')
@@ -51,3 +58,15 @@ const size = computed(() => {
   }
 })
 </script>
+
+<!-- <template>
+  <uni-icons
+    @click="() => emit('click')"
+    v-if="isCustomIcon"
+    custom-prefix="iconfont"
+    :type="props.type"
+    :color="color"
+    :size="size"
+  />
+  <uni-icons @click="() => emit('click')" v-else :type="props.type" :color="color" :size="size" />
+</template> -->
