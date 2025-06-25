@@ -21,7 +21,7 @@ const handleClick = () => {
 onMounted(() => {
   setTimeout(() => {
     uni.navigateTo({
-      url: '/pages/order/details/page?order=683da8a8418797e6c3aa91ba'
+      url: '/pages/order/details/page?order=684d1f6b57c2e4b572f03328'
     })
     // uni.switchTab({
     //   url: '/pages/commodity/page'

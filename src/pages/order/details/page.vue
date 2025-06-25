@@ -3,7 +3,7 @@
     <OrderType v-model="orderType" />
     <OrderList :order="order" />
     <OrderMark v-model="remarkModel" />
-    <OrderFooter :order="order" @submit="handlePay" />
+    <OrderFooter :order="order" @submit="handleToPay" />
     <comp-pay @submit="handleConfirmPay" :data="{ price: order?.actualAmount! }" v-model:open="payOpen" />
   </view>
 </template>
@@ -18,6 +18,7 @@ import OrderType from '../_ui/order-type.vue'
 import OrderFooter from '../_ui/order-footer.vue'
 import OrderMark from '../_ui/order-mark.vue'
 import { getOrder, submitOrder } from '../_api/order'
+import { pay } from '../_api/pay'
 
 const { searchParams, ready } = useSearchParams<{ order: string }>()
 const payOpen = ref(false)
@@ -38,21 +39,26 @@ watchEffect(async () => {
   }
 })
 
-const handleConfirmPay = async () => {
-  const { flag } = await submitOrder({
-    orderId: order.value?.id!,
-    orderType: orderType.value,
-    paymentType: 'wechat',
-    remark: remarkModel.value.remark
-  })
-  if (flag === 1) {
-    console.log('ok')
+/** 去支付 */
+const handleToPay = async () => {
+  if (order.value?.actualAmount && order.value?.actualAmount > 0) {
+    const { flag } = await submitOrder({
+      orderId: order.value?.id!,
+      orderType: orderType.value,
+      paymentType: 'wechat',
+      remark: remarkModel.value.remark
+    })
+    if (flag === 1) {
+      payOpen.value = true
+    }
   }
 }
 
-const handlePay = async () => {
-  if (order.value?.actualAmount && order.value?.actualAmount > 0) {
-    payOpen.value = true
+/** 确认支付 */
+const handleConfirmPay = async () => {
+  const { flag } = await pay(order.value?.id!)
+  if (flag === 1) {
+    console.log('ok')
   }
 }
 </script>

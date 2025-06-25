@@ -1,5 +1,5 @@
 import { post } from '@/common/js/request'
-import type { OrderCommodity } from '@/common/types/order'
+import type { OrderInfo } from '@/common/types/order'
 import type { Address } from '@/common/types/address'
 
 const getInfoUrl = '/api/address/get-info'
@@ -9,7 +9,7 @@ export async function create(dto: Omit<Address, 'id'>) {
 }
 
 export async function update(dto: Address) {
-  return await post<{ id: string; list: OrderCommodity[] }>('/api/address/update', dto)
+  return await post<{ id: string; list: OrderInfo['commoditys'] }>('/api/address/update', dto)
 }
 
 export async function del(id: string) {

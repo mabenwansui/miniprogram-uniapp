@@ -1,7 +1,7 @@
 import type { Cart } from '@/common/types/cart'
 import type { Store } from '@/common/types/store'
 
-export const ORDER_TYPE ={
+export const ORDER_TYPE = {
   /** 堂食 */
   DINE_IN: 'dine-in',
   /** 外卖 */
